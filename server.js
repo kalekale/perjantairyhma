@@ -2,7 +2,6 @@
 var path = require('path');
 var express = require("express");
 var session = require('express-session');
-var multer = require('multer');
 var db = require('./db');
 var bodyParser = require('body-parser');
 
