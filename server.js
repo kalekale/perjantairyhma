@@ -6,8 +6,7 @@ var db = require('./db');
 var bodyParser = require('body-parser');
 
 var app = express();
-app.use(session({secret: 'ssshhhhh'}));
-app.use(bodyParser.json());
+app.use(bodyParser.json());	
 
 
 app.get('/',function(req,res){
@@ -16,7 +15,18 @@ app.get('/',function(req,res){
 
 app.use('/', express.static(path.join(__dirname, 'dist')));
 
+app.post('/new', function(req. res) {
 
+	db.reference.updateAsync(
+		{ project: req.params.projectID},
+		{ $push:
+			{references: req.body.reference}
+		}
+	);
+ 	.then(() => {
+    res.sendStatus(200);
+  });
+})
 
 
 app.listen(3000,function(){
