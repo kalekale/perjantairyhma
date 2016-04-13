@@ -1,0 +1,86 @@
+
+
+<div class="page-header" ng-controller="MainController">
+  <h1>References</h1>
+
+
+    
+    
+
+
+    <!--Adding reference-->
+
+    <div>
+        <h2>Add new reference</h2>
+        <form>
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" class="form-control" ng-model="newReference.title">
+          </div>
+
+          <button class="btn btn-success" ng-click="addReference()">Add</button>
+        </form>
+    </div>
+
+
+    <!--This container has filtering functionality-->
+    <!--<div class="container" >
+        <div class="row">
+            <div class="col-md-2">
+                Search
+                <input type="text" ng-model="filter">
+            </div>
+            <div class="col-md-2">
+                Ordering
+                <select class="form-control"  ng-model="ordering">
+                    <option value="name" selected>Nimi</option>
+                    <option value="year">Vuosi</option>
+                    <option value="director">Ohjaaja</option>
+               </select>
+            </div>
+            <div class="col-md-2">
+                Suunta
+                <select class="form-control" ng-model="direction">
+                    <option value="true">Laskeva</option>
+                    <option value="" selected>Nouseva</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                Koko
+                <select class="form-control" ng-model="size" ng-init="size=25">
+                    <option value="5" >5</option>
+                    <option value="10">10</option>
+                    <option value="25" selected>25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="1000">no limit</option>
+                </select>
+            </div>
+            <div class="col-xs-12" style="height:20px;"></div>
+        </div>
+    </div>-->
+    
+    
+    <!--Listing references-->
+    <ul>
+      <li ng-repeat="reference in references track">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <a href="#/{{reference.id}}">
+            {{reference.title}}</a>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <!--Other info of the reference-->
+        </div>
+      </div>
+      </li>   
+    </ul>
+    <div class="col-xs-12" style="height:50px;"></div>
+    
+    
+    
+
+</div>
+

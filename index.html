@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head></head>
-  <body>
-    <div id="app"></div>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <head>
+  	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.12.2/react.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="src/css/styles.css"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.js"></script>
 
-    <script src="build/build.min.js"></script>
-  </body>
+    <!--Own js files-->
+    <script src="mainApp.js"></script>
+    <script src="controllers/list_and_add_controller.js"></script>
+    
+    
+    
+
+  </head>
+  <body ng-app="MainApp">
+    <div id="main-container" ng-view></div>
+	</body>
 </html>
