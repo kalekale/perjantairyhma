@@ -15,17 +15,22 @@ app.get('/',function(req,res){
 
 app.use('/', express.static(path.join(__dirname, 'dist')));
 
-app.post('/new', function(req. res) {
+app.post('/new', function(req, res) {
 
-	db.reference.updateAsync(
+	db.reference.Asyncupdate(
 		{ project: req.params.projectID},
 		{ $push:
 			{references: req.body.reference}
 		}
-	);
- 	.then(() => {
+	)
+ 	.then(function() {
     res.sendStatus(200);
   });
+});
+
+app.get('/get', function(req, res) {
+	db.reference.Asyncfind( { "projectID" : req.params.projectID } );
+
 })
 
 
