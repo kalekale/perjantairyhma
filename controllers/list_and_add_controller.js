@@ -4,7 +4,7 @@ MainApp.controller('MainController', function($scope, $http){
     $scope.newReference={};
     $scope.references=[];
 
-    $http.get("/").success(function(references){
+    $http.get("/getAll").success(function(references){
     	
     	$scope.references = references;
     });

@@ -63,7 +63,7 @@
     
     <!--Listing references-->
     <ul>
-      <li ng-repeat="reference in references track">
+      <li ng-repeat="reference in references track by reference._id">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">

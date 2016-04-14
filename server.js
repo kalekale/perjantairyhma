@@ -14,10 +14,10 @@ app.use(bodyParser.json());
 app.use('/', express.static(path.join(__dirname)));
 
 //list all
-app.get('/',function(req,res){
+app.get('/getAll',function(req,res){
 	
-	db.reference.Asyncfind()
-	.then(function(all){
+	db.references.findAsync()
+	.then(function(all) {
 		res.json(all);
 		alert(all);
 		res.send(200);
@@ -27,7 +27,7 @@ app.get('/',function(req,res){
 
 app.post('/new', function(req, res) {
 	//db pitää viitata johonkin kokoilmaan
-	db.reference.insert(
+	db.references.insertAsync(
 		{ title: req.body.title}
 	)
  	.then(function() {
