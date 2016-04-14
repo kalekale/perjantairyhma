@@ -11,13 +11,16 @@ describe('When visiting the main page', function(){
 	before(function(done){
 		this.server = app;
 		this.browser = new Browser({ site: "http://localhost:3000" });
+		done();
 	});
 
 	beforeEach(function(done){
 		this.browser.visit("/", done);
+		done();
 	});
 
 	it('it works!!', function(done){
 		expect(1 == 1);
+		done();
 	});
 });
