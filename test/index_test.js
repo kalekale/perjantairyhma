@@ -19,8 +19,8 @@ describe('When visiting the main page', function(){
 		done();
 	});
 
-	it('it works!!', function(done){
-		expect(1 == 1);
+	it('at least something works', function(done){
+		expect(1==1);
 		done();
 	});
 });
