@@ -10,15 +10,9 @@ MainApp.controller('MainController', function($scope,$location, $http){
     });
     
     $scope.addReference=(function(){
-    	$http.post("/new",$scope.newReference).then(function(){
-            
-            $scope.$applyAsync(function(){
-                console.log("apply");
-                   
-            })
-            
-
-        });
+        $scope.references.push($scope.newReference);
+        $scope.newReference={};
+    	$http.post("/new",$scope.newReference);
     });
         
         
