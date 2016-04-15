@@ -12,7 +12,7 @@
     <div class="col-md-2">
         What type of reference do you want to add?:
         <select class="form-control"  ng-model="type">
-            <option value="article" selected>Article</option>
+            <option value="article">Article</option>
             <option value="book">Book</option>
             <option value="inproceeding">Inproceeding</option>
        </select>
@@ -20,16 +20,22 @@
 
 
     <!--Forms for different reference types-->
+    
+
+    <div ng-if="type != null">
+      <h2>Add new {{type}} reference:</h2>
+      <p>Fields marked with '*' are required!</p> 
+    </div>
+
     <div ng-if="type == 'article'">
-        <h2>Add new Article reference:</h2>
-        <form>
+        <form name="articleForm" novalidate>
           <div class="form-group">
-            <label>Author</label>
-            <input type="text" class="form-control" ng-model="newReference.author">
+            <label>Author*</label>
+            <input type="text" class="form-control" ng-model="newReference.author" required>
           </div>
           <div class="form-group">
-            <label>Title</label>
-            <input type="text" class="form-control" ng-model="newReference.title">
+            <label>Title*</label>
+            <input type="text" class="form-control" ng-model="newReference.title" required>
           </div>
           <div class="form-group">
             <label>Journal</label>
@@ -60,20 +66,19 @@
             <input type="text" class="form-control" ng-model="newReference.address">
           </div>
 
-          <button class="btn btn-success" ng-click="addReference()">Add</button>
+          <button class="btn btn-success" ng-disabled="articleForm.$invalid" ng-click="addReference()">Add</button>
         </form>
     </div>
 
     <div ng-if="type == 'book'">
-        <h2>Add new Book reference:</h2>
-        <form>
+        <form name="bookForm" novalidate>
           <div class="form-group">
-            <label>Author</label>
-            <input type="text" class="form-control" ng-model="newReference.author">
+            <label>Author*</label>
+            <input type="text" class="form-control" ng-model="newReference.author" required>
           </div>
           <div class="form-group">
-            <label>Title</label>
-            <input type="text" class="form-control" ng-model="newReference.title">
+            <label>Title*</label>
+            <input type="text" class="form-control" ng-model="newReference.title" required>
           </div>
           <div class="form-group">
             <label>Publisher</label>
@@ -88,20 +93,19 @@
             <input type="text" class="form-control" ng-model="newReference.address">
           </div>
 
-          <button class="btn btn-success" ng-click="addReference()">Add</button>
+          <button class="btn btn-success" ng-disabled="bookForm.$invalid" ng-click="addReference()">Add</button>
         </form>
     </div>
 
     <div ng-if="type == 'inproceeding'">
-        <h2>Add new Inproceeding reference:</h2>
-        <form>
+        <form name="inproceedingForm" novalidate>
           <div class="form-group">
-            <label>Author</label>
-            <input type="text" class="form-control" ng-model="newReference.author">
+            <label>Author*</label>
+            <input type="text" class="form-control" ng-model="newReference.author" required>
           </div>
           <div class="form-group">
-            <label>Title</label>
-            <input type="text" class="form-control" ng-model="newReference.title">
+            <label>Title*</label>
+            <input type="text" class="form-control" ng-model="newReference.title" required>
           </div>
           <div class="form-group">
             <label>Book title</label>
@@ -124,9 +128,10 @@
             <input type="text" class="form-control" ng-model="newReference.address">
           </div>
 
-          <button class="btn btn-success" ng-click="addReference()">Add</button>
+          <button class="btn btn-success" ng-disabled="inproceedingForm.$invalid" ng-click="addReference()">Add</button>
         </form>
     </div>
+
 
 
     <!--This container has filtering functionality-->
@@ -183,7 +188,7 @@
       </div>
       </li>   
     </ul>
-    <div class="col-xs-12" style="height:50px;"></div>
+    
     
     
     
