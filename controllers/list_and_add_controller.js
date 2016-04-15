@@ -1,17 +1,13 @@
 
 MainApp.controller('MainController', function($scope,$location, $http){
     
-    $scope.newReference={};
-    $scope.references=[];
-
+    //methods
     $scope.getReferences=(function(){
         $http.get("/getAll").success(function(references){
             $scope.references = references;
         });
     });
 
-    
-    
     $scope.addReference=(function(){
         $http.post("/new",$scope.newReference).success(function(){
             $scope.newReference={};
@@ -20,6 +16,10 @@ MainApp.controller('MainController', function($scope,$location, $http){
 
         
     });
+
+    //always when coming to the page
+    $scope.getReferences();
+    $scope.newReference={};
         
         
 });
