@@ -4,6 +4,7 @@ var express = require("express");
 var session = require('express-session');
 var db = require('./db');
 var bodyParser = require('body-parser');
+var generator = require('./generator')
 
 var app = express();
 
@@ -27,6 +28,12 @@ app.post('/new', function(req, res) {
     res.sendStatus(200);
   });
 });
+
+
+app.get('/bib', function(req, res) { 
+	generator.writeFile();
+})
+
 
 app.listen(3000,function(){
     console.log("Working on port 3000");
