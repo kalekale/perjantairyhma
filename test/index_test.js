@@ -30,11 +30,11 @@ describe('User visits mainpage', function() {
     });
   });
 
-  describe('can add valid reference', function() {
+  describe('can add valid book', function() {
 
   	before(function(done) {
   		browser
-    	.select('select', 'Article')
+    	.select('select', 'Book')
     	.fill('author', 'Matti')
         .fill('title', 'Minun viite')
         .pressButton('Add', done);
@@ -42,8 +42,8 @@ describe('User visits mainpage', function() {
 
   	});
 	
-	it('form is shown', function() {
-      browser.assert.success();
+	it('book form is shown', function() {
+      browser.assert.text('h2', 'Add new book reference:');
     });
 
     it('should list new reference', function() {
