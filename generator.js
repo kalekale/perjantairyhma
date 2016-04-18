@@ -8,12 +8,14 @@ function writeFile() {
 	.then(function(allRefs) {
 		var stream = fs.createWriteStream("my_file.txt");
 		stream.once('open', function(fd) {
-  		stream.write("My first row\n");
-  		stream.write("My second row\n");
   		console.log(allRefs[0].type)
   		_.map(allRefs, function(ref) {
-  			stream.write('@');
-  			stream.write(ref.type)
+  			stream.write('@' + ref.type + '{');
+  			stream.write('\n');
+  			_.mapValues(ref, function(value, prop) {
+  				stream.write(prop + ' = {' + value + '}\n');
+  			})
+  			stream.write('}');
   		})
   		stream.end();
 		});

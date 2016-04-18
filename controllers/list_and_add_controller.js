@@ -17,6 +17,12 @@ MainApp.controller('MainController', function($scope,$location, $http){
         
     });
 
+    $scope.generateBibtext=(function(){
+        $http.get("/bib").success(function(bib){
+            console.log(bib);
+        });
+    })
+
 
     //always when coming to the page
     $scope.getReferences();
