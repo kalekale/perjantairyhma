@@ -1,5 +1,4 @@
 
-
 <div class="page-header" ng-controller="MainController">
   <h1>References</h1>
 
@@ -11,7 +10,7 @@
     <!--Select reference type-->
     <div class="col-md-2">
         What type of reference do you want to add?:
-        <select class="form-control"  ng-model="type">
+        <select class="form-control"  ng-model="newRefernece.type">
             <option value="article">Article</option>
             <option value="book">Book</option>
             <option value="inproceeding">Inproceeding</option>
@@ -22,12 +21,12 @@
     <!--Forms for different reference types-->
     
 
-    <div ng-if="type != null">
-      <h2>Add new {{type}} reference:</h2>
+    <div ng-if="newRefernece.type != null">
+      <h2>Add new {{newRefernece.type}} reference:</h2>
       <p>Fields marked with '*' are required!</p> 
     </div>
 
-    <div ng-if="type == 'article'">
+    <div ng-if="newRefernece.type == 'article'">
         <form name="articleForm" novalidate>
           <div class="form-group">
             <label>Author*</label>
@@ -70,7 +69,7 @@
         </form>
     </div>
 
-    <div ng-if="type == 'book'">
+    <div ng-if="newRefernece.type == 'book'">
         <form name="bookForm" novalidate>
           <div class="form-group">
             <label>Author*</label>
@@ -97,7 +96,7 @@
         </form>
     </div>
 
-    <div ng-if="type == 'inproceeding'">
+    <div ng-if="newRefernece.type == 'inproceeding'">
         <form name="inproceedingForm" novalidate>
           <div class="form-group">
             <label>Author*</label>

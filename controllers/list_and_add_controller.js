@@ -17,9 +17,12 @@ MainApp.controller('MainController', function($scope,$location, $http){
         
     });
 
+
     //always when coming to the page
     $scope.getReferences();
     $scope.newReference={};
+
+
         
         
 });
