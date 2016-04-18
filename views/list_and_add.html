@@ -22,7 +22,7 @@
     
 
     <div ng-if="newReference.type != null">
-      <h2>Add new {{newReference.type}} reference:</h2>
+      <h2 name="addType">Add new {{newReference.type}} reference:</h2>
       <p>Fields marked with '*' are required!</p> 
     </div>
 
@@ -181,7 +181,7 @@
         <div class="panel-heading">
           <h3 class="panel-title">
             <a href="#/{{reference._id}}">
-            Author: {{reference.author}}, Title: {{reference.title}}, Type: {{reference.title}}</a>
+            Author: {{reference.author}}, Title: {{reference.title}}, Type: {{reference.type}}</a>
           </h3>
         </div>
         <div class="panel-body">

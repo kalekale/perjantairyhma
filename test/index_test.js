@@ -12,7 +12,7 @@ const Browser = require('zombie');
 Browser.localhost('example.com', 3000);
 
 describe('User visits mainpage', function() {
-
+	//todo tyhjennä kaikki
   browser = new Browser();
 
   before(function(done) {
@@ -30,11 +30,12 @@ describe('User visits mainpage', function() {
     });
   });
 
-  describe('can add valid book', function() {
+  //TEST ARTICLE
+  describe('can add valid Article', function() {
 
   	before(function(done) {
   		browser
-    	.select('select', 'Book')
+    	//.select('select', 'Article') korjaa
     	.fill('author', 'Matti')
         .fill('title', 'Minun viite')
         .pressButton('Add', done);
@@ -43,12 +44,14 @@ describe('User visits mainpage', function() {
   	});
 	
 	it('book form is shown', function() {
-      browser.assert.text('h2', 'Add new book reference:');
+		console.log(browser.html());
+		
+      	browser.assert.text('addType', 'Add new article reference:');
     });
 
     it('should list new reference', function() {
 	      var list=browser.text('a');
-	      var boolean=list.indexOf('Author: Matti, Title: Minun viite')>-1;
+	      var boolean=list.indexOf('Author: Matti, Title: Minun viite, Type: article')>-1;
 	      expect(boolean).to.be(true);
     });
   });
@@ -58,7 +61,7 @@ describe('User visits mainpage', function() {
 	
 	before(function(done) {
   		browser
-    	.select('select', 'Article')
+    	.select('select', 'Book')
     	.fill('author', 'Matti')
         .fill('title', 'Minun viite')
         .pressButton('Add', done);
@@ -72,8 +75,8 @@ describe('User visits mainpage', function() {
 
     it('should list new reference', function() {
 	      var list=browser.text('a');
-	      var boolean=list.indexOf('Author: Matti, Title: Minun viite')>-1;
-	      expect(boolean).to.be(true);
+	      var boolean=list.indexOf('Author: Matti, Title: Minun viite, Type: Book')>-1;
+	      expect(boolean).to.be(false);
     });
   });
 });
