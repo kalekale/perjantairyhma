@@ -36,14 +36,14 @@ describe('User visits mainpage', function() {
   	before(function(done) {
   		browser
     	//.select('select', 'Article') korjaa
-    	.fill('author', 'Matti')
-        .fill('title', 'Minun viite')
+    	.fill('authorA', 'Matti')
+        .fill('titleA', 'Minun viite')
         .pressButton('Add', done);
 
 
   	});
 	
-	it('book form is shown', function() {
+	it('article form is shown', function() {
 		console.log(browser.html());
 		
       	browser.assert.text('addType', 'Add new article reference:');
@@ -56,14 +56,111 @@ describe('User visits mainpage', function() {
     });
   });
 
+  describe('can not add invalid Article', function() {
+  
+  before(function(done) {
+      browser
+      .select('select', 'Article')
+      .fill('authorA', 'Matti')
+        .fill('titleA', 'Minuen viite')
+        .pressButton('Add', done);
 
-  describe('can not add invalid reference', function() {
+
+    });
+  
+  it('form is shown', function() {
+      browser.assert.success();
+    });
+
+    it('should list new reference', function() {
+        var list=browser.text('a');
+        var boolean=list.indexOf('Author: Matti, Title: Minuen viite, Type: Article')>-1;
+        expect(boolean).to.be(false);
+    });
+  });
+
+ //INPROCEEDING TEST
+ describe('can add valid Inproceeding', function() {
+
+    before(function(done) {
+      browser
+      //.select('select', 'Article') korjaa
+      .fill('authorI', 'Matti')
+        .fill('titleI', 'Minun viite')
+        .pressButton('Add', done);
+
+
+    });
+  
+  it('Inproceeding form is shown', function() {
+    console.log(browser.html());
+    
+        browser.assert.text('addType', 'Add new article reference:');
+    });
+
+    it('should list new reference', function() {
+        var list=browser.text('a');
+        var boolean=list.indexOf('Author: Matti, Title: Minun viite, Type: article')>-1;
+        expect(boolean).to.be(true);
+    });
+  });
+
+  describe('can not add invalid Inproceeding', function() {
+  
+  before(function(done) {
+      browser
+      .select('select', 'Article')
+      .fill('authorI', 'Matti')
+        .fill('titleI', 'Minuen viite')
+        .pressButton('Add', done);
+
+
+    });
+  
+  it('form is shown', function() {
+
+    });
+
+    it('should list new reference', function() {
+        var list=browser.text('a');
+        var boolean=list.indexOf('Author: Matti, Title: Minuen viite, Type: Article')>-1;
+        expect(boolean).to.be(false);
+    });
+  });
+
+    //BOOK TESTS
+   describe('can add valid Book', function() {
+
+    before(function(done) {
+      browser
+      .fill('authorB', 'Matti')
+        .fill('titleB', 'Minsun viite')
+        .pressButton('Add', done);
+
+
+    });
+  
+  it('Book form is shown', function() {
+        console.log(browser.html());
+    
+        browser.assert.text('addType', 'Add new book reference:');
+    });
+
+    it('should list new reference', function() {
+        var list=browser.text('a');
+        var boolean=list.indexOf('Author: Matti, Title: Minsun viite, Type: article')>-1;
+        expect(boolean).to.be(true);
+    });
+  });
+
+
+  describe('can not add invalid Book', function() {
 	
 	before(function(done) {
   		browser
     	.select('select', 'Book')
-    	.fill('author', 'Matti')
-        .fill('title', 'Minun viite')
+    	.fill('authorB', 'Matti')
+        .fill('titleB', 'Manun viite')
         .pressButton('Add', done);
 
 
@@ -75,7 +172,7 @@ describe('User visits mainpage', function() {
 
     it('should list new reference', function() {
 	      var list=browser.text('a');
-	      var boolean=list.indexOf('Author: Matti, Title: Minun viite, Type: Book')>-1;
+	      var boolean=list.indexOf('Author: Matti, Title: Manun viite, Type: Book')>-1;
 	      expect(boolean).to.be(false);
     });
   });
