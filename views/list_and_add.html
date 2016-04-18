@@ -1,6 +1,6 @@
 
 <div class="page-header" ng-controller="MainController">
-  <h1>References</h1>
+  <h1 id="title">References</h1>
 
 
     
@@ -30,11 +30,11 @@
         <form name="articleForm" novalidate>
           <div class="form-group">
             <label>Author*</label>
-            <input type="text" class="form-control" ng-model="newReference.author" required>
+            <input type="text" class="form-control" name="author" ng-model="newReference.author" required>
           </div>
           <div class="form-group">
             <label>Title*</label>
-            <input type="text" class="form-control" ng-model="newReference.title" required>
+            <input type="text" class="form-control" name="title" ng-model="newReference.title" required>
           </div>
           <div class="form-group">
             <label>Journal</label>
