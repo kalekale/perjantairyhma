@@ -31,124 +31,85 @@ describe('User visits mainpage', function() {
   });
 
   //TEST ARTICLE
-  describe('can add valid Article', function() {
+  describe('adds valid Article', function() {
 
   	before(function(done) {
   		browser
     	//.select('select', 'Article') korjaa
-    	.fill('authorA', 'Matti')
+    	  .fill('authorA', 'Matti')
         .fill('titleA', 'Minun viite')
         .pressButton('Add', done);
-
-
   	});
-	
-	it('article form is shown', function() {
-		console.log(browser.html());
-		
-      	browser.assert.text('addType', 'Add new article reference:');
-    });
 
-    it('should list new reference', function() {
+    it('it is added to the listing', function() {
 	      var list=browser.text('a');
 	      var boolean=list.indexOf('Author: Matti, Title: Minun viite, Type: article')>-1;
 	      expect(boolean).to.be(true);
     });
   });
 
-  describe('can not add invalid Article', function() {
+  describe('when adding an invalid Article', function() {
   
   before(function(done) {
-      browser
-      .select('select', 'Article')
-      .fill('authorA', 'Matti')
-        .fill('titleA', 'Minuen viite')
+      Browser
+        .fill('authorA', 'Matti')
+        .fill('titleA', '')
         .pressButton('Add', done);
-
-
-    });
-  
-  it('form is shown', function() {
-      browser.assert.success();
     });
 
-    it('should list new reference', function() {
+    it('it should not be listed', function() {
         var list=browser.text('a');
-        var boolean=list.indexOf('Author: Matti, Title: Minuen viite, Type: Article')>-1;
+        var boolean=list.indexOf('Author: Matti, Title: , Type: article')>-1;
         expect(boolean).to.be(false);
     });
   });
 
  //INPROCEEDING TEST
- describe('can add valid Inproceeding', function() {
+ describe('can add a valid Inproceeding', function() {
 
     before(function(done) {
       browser
-      //.select('select', 'Article') korjaa
-      .fill('authorI', 'Matti')
-        .fill('titleI', 'Minun viite')
+        .fill('authorI', 'Mattis')
+        .fill('titleI', 'Minusn viite')
         .pressButton('Add', done);
-
-
-    });
-  
-  it('Inproceeding form is shown', function() {
-    console.log(browser.html());
-    
-        browser.assert.text('addType', 'Add new article reference:');
     });
 
     it('should list new reference', function() {
         var list=browser.text('a');
-        var boolean=list.indexOf('Author: Matti, Title: Minun viite, Type: article')>-1;
+        var boolean=list.indexOf('Author: Mattis, Title: Minusn viite, Type: inproceeding')>-1;
         expect(boolean).to.be(true);
     });
   });
 
-  describe('can not add invalid Inproceeding', function() {
+  describe('can not add an invalid Inproceeding', function() {
   
   before(function(done) {
       browser
-      .select('select', 'Article')
-      .fill('authorI', 'Matti')
-        .fill('titleI', 'Minuen viite')
+        .fill('authorI', 'Mattie')
+        .fill('titleI', '')
         .pressButton('Add', done);
-
-
-    });
-  
-  it('form is shown', function() {
-
     });
 
     it('should list new reference', function() {
         var list=browser.text('a');
-        var boolean=list.indexOf('Author: Matti, Title: Minuen viite, Type: Article')>-1;
+        var boolean=list.indexOf('Author: Mattie, Title: , Type: Article')>-1;
         expect(boolean).to.be(false);
     });
   });
 
-    //BOOK TESTS
-   describe('can add valid Book', function() {
+   //BOOK TESTS
+   describe('can add a valid Book', function() {
 
     before(function(done) {
       browser
-      .fill('authorB', 'Matti')
-        .fill('titleB', 'Minsun viite')
+        .fill('authorB', 'Mattis')
+        .fill('titleB', 'Minsun viites')
         .pressButton('Add', done);
-
-
-    });
-  
-  it('Book form is shown', function() {
-        console.log(browser.html());
-    
-        browser.assert.text('addType', 'Add new book reference:');
     });
 
     it('should list new reference', function() {
         var list=browser.text('a');
-        var boolean=list.indexOf('Author: Matti, Title: Minsun viite, Type: article')>-1;
+        var boolean=list.indexOf('Author: Mattis, Title: Minsun viites, Type: book')>-1;
         expect(boolean).to.be(true);
     });
   });
@@ -158,24 +119,23 @@ describe('User visits mainpage', function() {
 	
 	before(function(done) {
   		browser
-    	.select('select', 'Book')
-    	.fill('authorB', 'Matti')
-        .fill('titleB', 'Manun viite')
-        .pressButton('Add', done);
-
-
+    	.fill('authorB', 'Mattib')
+      .fill('titleB', 'Manun viiteb')
+      .pressButton('Add', done);
   	});
-	
-	it('form is shown', function() {
-      browser.assert.success();
-    });
 
     it('should list new reference', function() {
 	      var list=browser.text('a');
-	      var boolean=list.indexOf('Author: Matti, Title: Manun viite, Type: Book')>-1;
+	      var boolean=list.indexOf('Author: Mattib, Title: Manun viiteb, Type: Book')>-1;
 	      expect(boolean).to.be(false);
     });
   });
+
+  //TEST BIBTEX ?? ?? ? ??? ?? ?? ??
+    it('page contains bibtex generating button', function() {
+      browser.assert.element('button', 'Generate Bibtext');
+  });
+
 });
 
 /*describe('When visiting the main page', function(){
