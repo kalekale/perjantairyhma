@@ -17,10 +17,12 @@ function writeFile(cb) {
   				stream.write(prop + ' = {' + value + '},\n');
   				}
   			})
-  			stream.write('}\n');
+  			stream.write('}\n\n');
   		})
   		stream.end();
-  		cb();
+  		stream.on('finish', function() {
+  			cb();
+  		})
 		});
 	})
 };
