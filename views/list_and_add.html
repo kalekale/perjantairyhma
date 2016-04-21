@@ -65,7 +65,7 @@
             <input type="text" class="form-control" name="addressA" ng-model="newReference.address">
           </div>
 
-          <button name="add" class="btn btn-success" ng-disabled="articleForm.$invalid" ng-click="addReference()">Add</button>
+          <button id="addReference" class="btn btn-success" ng-disabled="articleForm.$invalid" ng-click="addReference()">Add</button>
         </form>
     </div>
 
@@ -92,7 +92,7 @@
             <input type="text" class="form-control" name="addressB" ng-model="newReference.address">
           </div>
 
-          <button class="btn btn-success" ng-disabled="bookForm.$invalid" ng-click="addReference()">Add</button>
+          <button id="addBook" class="btn btn-success" ng-disabled="bookForm.$invalid" ng-click="addReference()">Add</button>
         </form>
     </div>
 
@@ -127,7 +127,7 @@
             <input type="text" class="form-control" name="addressI" ng-model="newReference.address">
           </div>
 
-          <button class="btn btn-success" ng-disabled="inproceedingForm.$invalid" ng-click="addReference()">Add</button>
+          <button id="addInproceeding" class="btn btn-success" ng-disabled="inproceedingForm.$invalid" ng-click="addReference()">Add</button>
         </form>
     </div>
     <p>

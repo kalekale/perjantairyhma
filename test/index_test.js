@@ -49,7 +49,7 @@ describe('User visits mainpage', function() {
     });
   });
 
-  describe('when adding an invalid Article', function() {
+  describe('when trying to add an invalid Article', function() {
   
   before(function(done) {
       browser
@@ -59,9 +59,9 @@ describe('User visits mainpage', function() {
         done();
     });
 
-    it('it should not be listed', function() {
-      console.log(browser.html());
-      browser.assert.attribute('#addReference', 'disabled', '');
+    it('the button should be disabled', function() {
+      // console.log(browser.html());
+      browser.assert.attribute('#addReference', 'disabled', 'disabled');
         // var list=browser.text('a');
         // var boolean=list.indexOf('Author: Matti, Title: , Type: article')>-1;
         // expect(boolean).to.be(false);
@@ -86,20 +86,22 @@ describe('User visits mainpage', function() {
     });
   });
 
-  describe('can not add an invalid Inproceeding', function() {
+  describe('when trying to add an invalid inproceeding', function() {
   
   before(function(done) {
       browser
-    	.select('select', 'Inproceeding')
-        .fill('authorI', 'Mattie')
-        .fill('titleI', '')
-        .pressButton('Add', done);
+    	.select('select', 'Inproceeding');
+        browser.fill('authorI', 'Mattie')
+        .fill('titleI', '');
+        done();
     });
 
-    it('should list new reference', function() {
-        var list=browser.text('a');
-        var boolean=list.indexOf('Author: Mattie, Title: , Type: Article')>-1;
-        expect(boolean).to.be(false);
+    it('the button should be disabled', function() {
+      
+      browser.assert.attribute('#addInproceeding', 'disabled', 'disabled');
+        // var list=browser.text('a');
+        // var boolean=list.indexOf('Author: Mattie, Title: , Type: Article')>-1;
+        // expect(boolean).to.be(false);
     });
   });
 
