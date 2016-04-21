@@ -30,39 +30,39 @@
         <form name="articleForm" novalidate>
           <div class="form-group">
             <label>Author*</label>
-            <input type="text" class="form-control" name="author" ng-model="newReference.author" required>
+            <input type="text" class="form-control" name="authorA" ng-model="newReference.author" required>
           </div>
           <div class="form-group">
             <label>Title*</label>
-            <input type="text" class="form-control" name="title" ng-model="newReference.title" required>
+            <input type="text" class="form-control" name="titleA" ng-model="newReference.title" required>
           </div>
           <div class="form-group">
             <label>Journal</label>
-            <input type="text" class="form-control" ng-model="newReference.journal">
+            <input type="text" class="form-control" name="journalA" ng-model="newReference.journal">
           </div>
           <div class="form-group">
             <label>Volume</label>
-            <input type="text" class="form-control" ng-model="newReference.volume">
+            <input type="text" class="form-control" name="volumeA" ng-model="newReference.volume">
           </div>
           <div class="form-group">
             <label>Number</label>
-            <input type="text" class="form-control" ng-model="newReference.number">
+            <input type="text" class="form-control" name="numberA" ng-model="newReference.number">
           </div>
           <div class="form-group">
             <label>Year</label>
-            <input type="text" class="form-control" ng-model="newReference.year">
+            <input type="text" class="form-control" name="yearA" ng-model="newReference.year">
           </div>
           <div class="form-group">
             <label>Pages</label>
-            <input type="text" class="form-control" ng-model="newReference.pages">
+            <input type="text" class="form-control" name="pagesA" ng-model="newReference.pages">
           </div>
           <div class="form-group">
             <label>Publisher</label>
-            <input type="text" class="form-control" ng-model="newReference.publisher">
+            <input type="text" class="form-control" name="publisherA" ng-model="newReference.publisher">
           </div>
           <div class="form-group">
             <label>Address</label>
-            <input type="text" class="form-control" ng-model="newReference.address">
+            <input type="text" class="form-control" name="addressA" ng-model="newReference.address">
           </div>
 
           <button class="btn btn-success" ng-disabled="articleForm.$invalid" ng-click="addReference()">Add</button>
@@ -73,23 +73,23 @@
         <form name="bookForm" novalidate>
           <div class="form-group">
             <label>Author*</label>
-            <input type="text" class="form-control" name="author" ng-model="newReference.author" required>
+            <input type="text" class="form-control" name="authorB" ng-model="newReference.author" required>
           </div>
           <div class="form-group">
             <label>Title*</label>
-            <input type="text" class="form-control" name="title" ng-model="newReference.title" required>
+            <input type="text" class="form-control" name="titleB" ng-model="newReference.title" required>
           </div>
           <div class="form-group">
             <label>Publisher</label>
-            <input type="text" class="form-control" ng-model="newReference.publisher">
+            <input type="text" class="form-control" name="publisherB" ng-model="newReference.publisher">
           </div>
           <div class="form-group">
             <label>Year</label>
-            <input type="text" class="form-control" ng-model="newReference.year">
+            <input type="text" class="form-control" name="yearB" ng-model="newReference.year">
           </div>
           <div class="form-group">
             <label>Address</label>
-            <input type="text" class="form-control" ng-model="newReference.address">
+            <input type="text" class="form-control" name="addressB" ng-model="newReference.address">
           </div>
 
           <button class="btn btn-success" ng-disabled="bookForm.$invalid" ng-click="addReference()">Add</button>
@@ -100,38 +100,38 @@
         <form name="inproceedingForm" novalidate>
           <div class="form-group">
             <label>Author*</label>
-            <input type="text" class="form-control" ng-model="newReference.author" required>
+            <input type="text" class="form-control" name="authorI" ng-model="newReference.author" required>
           </div>
           <div class="form-group">
             <label>Title*</label>
-            <input type="text" class="form-control" ng-model="newReference.title" required>
+            <input type="text" class="form-control" name="titleI" ng-model="newReference.title" required>
           </div>
           <div class="form-group">
             <label>Book title</label>
-            <input type="text" class="form-control" ng-model="newReference.booktitle">
+            <input type="text" class="form-control" name="bookTitleI" ng-model="newReference.booktitle">
           </div>
           <div class="form-group">
             <label>Year</label>
-            <input type="text" class="form-control" ng-model="newReference.year">
+            <input type="text" class="form-control" name="yearI" ng-model="newReference.year">
           </div>
           <div class="form-group">
             <label>Pages</label>
-            <input type="text" class="form-control" ng-model="newReference.pages">
+            <input type="text" class="form-control" name="pagesI" ng-model="newReference.pages">
           </div>
           <div class="form-group">
             <label>Publisher</label>
-            <input type="text" class="form-control" ng-model="newReference.publisher">
+            <input type="text" class="form-control" name="publisherI" ng-model="newReference.publisher">
           </div>
           <div class="form-group">
             <label>Address</label>
-            <input type="text" class="form-control" ng-model="newReference.address">
+            <input type="text" class="form-control" name="addressI" ng-model="newReference.address">
           </div>
 
           <button class="btn btn-success" ng-disabled="inproceedingForm.$invalid" ng-click="addReference()">Add</button>
         </form>
     </div>
     <p>
-      <button class="btn btn-success" ng-click="generateBibtex()">Generate Bibtex</button>
+      <button class="btn btn-success" name="bibtexGenerator" ng-click="generateBibtex()">Generate Bibtex</button>
     </p>
 
 

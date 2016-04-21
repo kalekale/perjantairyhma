@@ -31,54 +31,111 @@ describe('User visits mainpage', function() {
   });
 
   //TEST ARTICLE
-  describe('can add valid Article', function() {
+  describe('adds valid Article', function() {
 
   	before(function(done) {
   		browser
     	//.select('select', 'Article') korjaa
-    	.fill('author', 'Matti')
-        .fill('title', 'Minun viite')
+    	  .fill('authorA', 'Matti')
+        .fill('titleA', 'Minun viite')
         .pressButton('Add', done);
-
-
   	});
-	
-	it('book form is shown', function() {
-		console.log(browser.html());
-		
-      	browser.assert.text('addType', 'Add new article reference:');
-    });
 
-    it('should list new reference', function() {
+    it('it is added to the listing', function() {
 	      var list=browser.text('a');
 	      var boolean=list.indexOf('Author: Matti, Title: Minun viite, Type: article')>-1;
 	      expect(boolean).to.be(true);
     });
   });
 
-
-  describe('can not add invalid reference', function() {
-	
-	before(function(done) {
-  		browser
-    	.select('select', 'Book')
-    	.fill('author', 'Matti')
-        .fill('title', 'Minun viite')
+  describe('when adding an invalid Article', function() {
+  
+  before(function(done) {
+      Browser
+        .fill('authorA', 'Matti')
+        .fill('titleA', '')
         .pressButton('Add', done);
+    });
 
+    it('it should not be listed', function() {
+        var list=browser.text('a');
+        var boolean=list.indexOf('Author: Matti, Title: , Type: article')>-1;
+        expect(boolean).to.be(false);
+    });
+  });
 
-  	});
-	
-	it('form is shown', function() {
-      browser.assert.success();
+ //INPROCEEDING TEST
+ describe('can add a valid Inproceeding', function() {
+
+    before(function(done) {
+      browser
+        .fill('authorI', 'Mattis')
+        .fill('titleI', 'Minusn viite')
+        .pressButton('Add', done);
     });
 
     it('should list new reference', function() {
+        var list=browser.text('a');
+        var boolean=list.indexOf('Author: Mattis, Title: Minusn viite, Type: inproceeding')>-1;
+        expect(boolean).to.be(true);
+    });
+  });
+
+  describe('can not add an invalid Inproceeding', function() {
+  
+  before(function(done) {
+      browser
+        .fill('authorI', 'Mattie')
+        .fill('titleI', '')
+        .pressButton('Add', done);
+    });
+
+    it('should list new reference', function() {
+        var list=browser.text('a');
+        var boolean=list.indexOf('Author: Mattie, Title: , Type: Article')>-1;
+        expect(boolean).to.be(false);
+    });
+  });
+
+   //BOOK TESTS
+   describe('can add a valid Book', function() {
+
+    before(function(done) {
+      browser
+        .fill('authorB', 'Mattis')
+        .fill('titleB', 'Minsun viites')
+        .pressButton('Add', done);
+    });
+
+    it('should list new reference', function() {
+        var list=browser.text('a');
+        var boolean=list.indexOf('Author: Mattis, Title: Minsun viites, Type: book')>-1;
+        expect(boolean).to.be(true);
+    });
+  });
+
+
+  describe('can not add invalid Book', function() {
+	
+	before(function(done) {
+  		browser
+    	.fill('authorB', 'Mattib')
+      .fill('titleB', 'Manun viiteb')
+      .pressButton('Add', done);
+  	});
+
+    it('should list new reference', function() {
 	      var list=browser.text('a');
-	      var boolean=list.indexOf('Author: Matti, Title: Minun viite, Type: Book')>-1;
+	      var boolean=list.indexOf('Author: Mattib, Title: Manun viiteb, Type: Book')>-1;
 	      expect(boolean).to.be(false);
     });
   });
+
+  //TEST BIBTEX ?? ?? ? ??? ?? ?? ??
+    it('page contains bibtex generating button', function() {
+      browser.assert.element('button', 'Generate Bibtext');
+  });
+
 });
 
 /*describe('When visiting the main page', function(){
