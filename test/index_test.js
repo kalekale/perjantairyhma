@@ -34,8 +34,9 @@ describe('User visits mainpage', function() {
   describe('adds valid Article', function() {
 
   	before(function(done) {
+      // console.log(browser.html());
   		browser
-    	//.select('select', 'Article') korjaa
+    	.select('select', 'Article')
     	  .fill('authorA', 'Matti')
         .fill('titleA', 'Minun viite')
         .pressButton('Add', done);
@@ -51,16 +52,19 @@ describe('User visits mainpage', function() {
   describe('when adding an invalid Article', function() {
   
   before(function(done) {
-      Browser
-        .fill('authorA', 'Matti')
-        .fill('titleA', '')
-        .pressButton('Add', done);
+      browser
+    	.select('select', 'Article');
+        browser.fill('authorA', 'Matti')
+        .fill('titleA', '');
+        done();
     });
 
     it('it should not be listed', function() {
-        var list=browser.text('a');
-        var boolean=list.indexOf('Author: Matti, Title: , Type: article')>-1;
-        expect(boolean).to.be(false);
+      console.log(browser.html());
+      browser.assert.attribute('#addReference', 'disabled', '');
+        // var list=browser.text('a');
+        // var boolean=list.indexOf('Author: Matti, Title: , Type: article')>-1;
+        // expect(boolean).to.be(false);
     });
   });
 
@@ -69,6 +73,7 @@ describe('User visits mainpage', function() {
 
     before(function(done) {
       browser
+    	.select('select', 'Inproceeding')
         .fill('authorI', 'Mattis')
         .fill('titleI', 'Minusn viite')
         .pressButton('Add', done);
@@ -85,6 +90,7 @@ describe('User visits mainpage', function() {
   
   before(function(done) {
       browser
+    	.select('select', 'Inproceeding')
         .fill('authorI', 'Mattie')
         .fill('titleI', '')
         .pressButton('Add', done);
@@ -102,6 +108,7 @@ describe('User visits mainpage', function() {
 
     before(function(done) {
       browser
+    .select('select', 'Book')
         .fill('authorB', 'Mattis')
         .fill('titleB', 'Minsun viites')
         .pressButton('Add', done);
@@ -119,6 +126,8 @@ describe('User visits mainpage', function() {
 	
 	before(function(done) {
   		browser
+      
+    	.select('select', 'Book')
     	.fill('authorB', 'Mattib')
       .fill('titleB', 'Manun viiteb')
       .pressButton('Add', done);
