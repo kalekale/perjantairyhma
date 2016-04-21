@@ -17,10 +17,9 @@ MainApp.controller('MainController', function($scope,$location, $http){
         
     });
 
-    $scope.generateBibtext=(function(){
-        $http.get("/bib").success(function(bib){
-            console.log(bib);
-        });
+    $scope.generateBibtex=(function(){
+        console.log('pressed')
+        window.open('/bib');
     })
 
 

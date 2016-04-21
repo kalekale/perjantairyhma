@@ -5,6 +5,7 @@ var session = require('express-session');
 var db = require('./db');
 var bodyParser = require('body-parser');
 var generator = require('./generator')
+var mime = require('mime');
 
 var app = express();
 
@@ -31,7 +32,11 @@ app.post('/new', function(req, res) {
 
 
 app.get('/bib', function(req, res) { 
-	generator.writeFile();
+	console.log('asd');
+	generator.writeFile(function() {
+		var file = __dirname + '/tmp/my_file.txt';
+  		res.download(file);
+	})
 })
 
 

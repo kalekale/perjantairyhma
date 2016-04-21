@@ -1,0 +1,12 @@
+@article{5714cb03bb68d8c9049db867,
+author = {1},
+title = {2},
+journal = {3},
+volume = {4},
+number = {5},
+year = {6},
+pages = {7},
+publisher = {8},
+address = {9},
+}
+
