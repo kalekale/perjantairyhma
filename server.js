@@ -3,10 +3,11 @@ var path = require('path');
 var express = require("express");
 var session = require('express-session');
 var db = require('./db');
+var mongojs = require('mongojs');
 var bodyParser = require('body-parser');
 var generator = require('./generator')
 var mime = require('mime');
-
+var ObjectId = mongojs.ObjectId;
 var app = express();
 
 app.use(bodyParser.json());	
@@ -28,6 +29,21 @@ app.post('/new', function(req, res) {
  	.then(function() {
     res.sendStatus(200);
   });
+});
+
+app.get('/:id', function(req,res){
+	
+	db.references.findOneAsync({_id: ObjectId(req.params.id)})
+	.then(function(ref){
+		res.json(ref);
+	});
+});
+
+app.delete('/:id', function(req,res){
+	db.references.removeAsync({_id: ObjectId(req.params.id)})
+	.then(function(ref){
+		res.sendStatus(200);
+	});
 });
 
 

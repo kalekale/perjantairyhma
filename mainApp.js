@@ -7,6 +7,10 @@ MainApp.config(function($routeProvider){
       controller: 'MainController',
       templateUrl: '/views/list_and_add.html'
     })
+    .when('/:id', {
+      controller: 'ReferenceController',
+      templateUrl: '/views/reference.html'
+    })
     .otherwise({
       redirectTo: '/'
     });

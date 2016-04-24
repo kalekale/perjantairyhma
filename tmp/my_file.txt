@@ -1,12 +1,20 @@
-@article{5714cb03bb68d8c9049db867,
-author = {1},
-title = {2},
-journal = {3},
-volume = {4},
-number = {5},
-year = {6},
-pages = {7},
-publisher = {8},
-address = {9},
+@article{5714d07d453129883f52150e,
+author = {Matti},
+title = {Minun viite},
+}
+
+@book{5714d07d453129883f52150f,
+author = {Matti},
+title = {Minun viite},
+}
+
+@book{5718a7cb2c7d633602256963,
+author = {Uusi},
+title = {Viite},
+}
+
+@article{5718a9e78ffef45202fd6733,
+author = {Liisa},
+title = {Viite},
 }
 
