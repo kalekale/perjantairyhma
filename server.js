@@ -14,6 +14,7 @@ app.use(bodyParser.json());
 
 app.use('/', express.static(path.join(__dirname)));
 
+//get all refs
 app.get('/getAll',function(req,res){
 	
 	db.references.findAsync()
@@ -22,6 +23,7 @@ app.get('/getAll',function(req,res){
 	})  
 });
 
+//create new ref
 app.post('/new', function(req, res) {
 	db.references.insertAsync(
 		req.body
@@ -31,6 +33,7 @@ app.post('/new', function(req, res) {
   });
 });
 
+//ger ref by id
 app.get('/:id', function(req,res){
 	
 	db.references.findOneAsync({_id: ObjectId(req.params.id)})
@@ -39,6 +42,17 @@ app.get('/:id', function(req,res){
 	});
 });
 
+//update ref
+app.put('/:id', function(req,res){
+	console.log("posting update in server.js");
+	db.references.updateAsync({_id: ObjectId(req.params.id)}, req.body)
+	.then(function(ref){
+		console.log("update onnistuu");
+		res.json(ref);
+	});
+});
+
+//delete ref by id
 app.delete('/:id', function(req,res){
 	db.references.removeAsync({_id: ObjectId(req.params.id)})
 	.then(function(ref){

@@ -2,13 +2,13 @@
 <div class="page-header" ng-controller="ReferenceController">
 
     <div class="page-header">
-      <h1>{{reference.title}}, by {{reference.author}}</h1>
+      <h1>"{{reference.title}}", type:{{reference.type}}</h1>
     </div>
     <div class="btn-toolbar"></div>
         
-    
+    <!--Reference info. Only fields that belong to the type of the reference are shown (ng-if)-->
     <form name="referenceForm" novalidate>
-          <div class="form-group">
+          <div class="form-group" >
             <label>Author*</label>
             <input type="text" class="form-control" name="author" ng-model="reference.author" placeholder="reference.author" required>
           </div>
@@ -16,23 +16,23 @@
             <label>Title*</label>
             <input type="text" class="form-control" name="title" ng-model="reference.title" placeholder="reference.title" required>
           </div>
-          <div class="form-group">
+          <div class="form-group" ng-if="reference.type=='article'">
             <label>Journal</label>
             <input type="text" class="form-control" name="journal" ng-model="reference.journal" placeholder="reference.journal">
           </div>
-          <div class="form-group">
+          <div class="form-group" ng-if="reference.type=='inproceeding'">
             <label>Book title</label>
             <input type="text" class="form-control" name="bookTitle" ng-model="reference.booktitle" placeholder="reference.booktitle">
           </div>
-          <div class="form-group">
+          <div class="form-group" ng-if="reference.type=='inproceeding' || reference.type=='article' ">
             <label>Pages</label>
             <input type="text" class="form-control" name="pages" ng-model="reference.pages" placeholder="reference.pages">
           </div>
-          <div class="form-group">
+          <div class="form-group" ng-if="reference.type=='article' ">
             <label>Volume</label>
             <input type="text" class="form-control" name="volume" ng-model="reference.volume" placeholder="reference.volume">
           </div>
-          <div class="form-group">
+          <div class="form-group" ng-if="reference.type=='article' ">
             <label>Number</label>
             <input type="text" class="form-control" name="number" ng-model="reference.number" placeholder="reference.number">
           </div>
