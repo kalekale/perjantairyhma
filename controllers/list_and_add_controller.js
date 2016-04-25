@@ -22,6 +22,12 @@ MainApp.controller('MainController', function($scope,$location, $http){
         window.open('/bib');
     })
 
+    $scope.deleteReference=function(){
+        $http.delete("/"+$routeParams.id).success(function(){
+            $location.path("/");
+        });
+    };
+
 
     //always when coming to the page
     $scope.getReferences();
