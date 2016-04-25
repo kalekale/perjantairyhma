@@ -73,7 +73,11 @@
         <form name="bookForm" novalidate>
           <div class="form-group">
             <label>Author*</label>
-            <input type="text" class="form-control" name="authorB" ng-model="newReference.author" required>
+            <input type="text" class="form-control" name="authorB" ng-model="newReference.author" required="!newReference.editor">
+          </div>
+          <div class="form-group">
+            <label>Editor*</label>
+            <input type="text" class="form-control" name="editorB" ng-model="newReference.editor" required="!newReference.author">
           </div>
           <div class="form-group">
             <label>Title*</label>
