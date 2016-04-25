@@ -79,7 +79,7 @@ describe('User visits mainpage', function() {
 				.fill('titleI', 'Minusn viite')
 				.fill('bookTitleI', 'Minun Elämäni VII')
 				.fill('yearI', '9253')
-				.pressButton('Add', adone);
+				.pressButton('Add', done);
 		});
 
 		it('should list new reference', function() {
@@ -95,7 +95,7 @@ describe('User visits mainpage', function() {
 			browser
 			.select('select', 'Inproceeding');
 				browser.fill('pagesI', 'eeeee')
-				.fill('pubisherI', 'ooooo')
+				.fill('publisherI', 'ooooo')
 				.fill('addressI', 'ooooo');
 				done();
 		});
