@@ -45,7 +45,8 @@ app.get('/:id', function(req,res){
 //update ref
 app.put('/:id', function(req,res){
 	console.log("posting update in server.js");
-	db.references.updateAsync({_id: ObjectId(req.params.id)}, req.body)
+	//req.body.id=null;
+	db.references.updateAsync({_id: req.params.id}, req.body)
 	.then(function(ref){
 		console.log("update onnistuu");
 		res.json(ref);
