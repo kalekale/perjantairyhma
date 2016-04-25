@@ -10,7 +10,11 @@
     <form name="referenceForm" novalidate>
           <div class="form-group" >
             <label>Author*</label>
-            <input type="text" class="form-control" name="author" ng-model="reference.author" placeholder="reference.author" required>
+            <input type="text" class="form-control" name="author" ng-model="reference.author" placeholder="reference.author" ng-required="!reference.editor">
+          </div>
+          <div class="form-group" >
+            <label>Editor*</label>
+            <input type="text" class="form-control" name="editor" ng-model="reference.editor" placeholder="reference.editor" ng-required="!reference.author">
           </div>
           <div class="form-group">
             <label>Title*</label>
