@@ -7,4 +7,4 @@
 [Travis](https://travis-ci.org/kalekale/perjantairyhma)
 
 
-[Heroku]()
+[Heroku](http://perjantairyhma.herokuapp.com/#/)
