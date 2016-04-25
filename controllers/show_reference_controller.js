@@ -1,6 +1,6 @@
 MainApp.controller('ReferenceController', function($scope,$location, $routeParams,$http){
     
-	console.log($routeParams.id);
+	$scope.reference={};
     
     $http.get("/"+$routeParams.id).success(function(ref){
         console.log("latasi elokuvan sivun");
