@@ -37,11 +37,11 @@ describe('User visits mainpage', function() {
 			// console.log(browser.html());
 			browser
 			.select('select', 'Article')
-				.fill('authorA', 'Matti')
-				.fill('titleA', 'Minun viite')
-				.fill('journalA', 'Maailmojen Sota II')
-				.fill('yearA', '1917')
-				.pressButton('Add', done);
+			.fill('authorA', 'Matti')
+			.fill('titleA', 'Minun viite')
+			.fill('journalA', 'Maailmojen Sota II')
+			.fill('yearA', '1917')
+			.pressButton('Add', done);
 		});
 
 		it('it is added to the listing', function() {
@@ -168,25 +168,6 @@ describe('User visits mainpage', function() {
 		it('page contains bibtex generating button', function() {
 			browser.assert.element('button', 'Generate Bibtext');
 		});
+	});
 
 });
-
-/*describe('When visiting the main page', function(){
-	browser = new Browser();
-
-	before(function(done){
-		this.server = app;
-		this.browser = new Browser({ site: "http://localhost:3000" });
-		done();
-	});
-
-	beforeEach(function(done){
-		this.browser.visit("/", done);
-		done();
-	});
-
-	it('at least something works', function(done){
-		browser.assert.text("title","Refernece");
-		done();
-	});
-});*/
