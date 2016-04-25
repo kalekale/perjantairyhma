@@ -4,4 +4,7 @@
 
 [Burndown](https://docs.google.com/spreadsheets/d/1gxW_Hg_WwCgIQfT8BQwyhtdaj4JRK95bNn6m4OD9ARM/edit#gid=948331566)
 
+[Travis](https://travis-ci.org/kalekale/perjantairyhma)
+
+
 [Heroku]()
