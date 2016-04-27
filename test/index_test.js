@@ -184,7 +184,7 @@ describe('User visits mainpage', function() {
     });
 
     it('lin exists', function() {
-      browser.assert.link('Author: Ma, Title: My, Type: book');
+      browser.assert.link('a', 'Author: Ma, Title: My, Type: book');
     });
     
   });
