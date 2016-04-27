@@ -165,11 +165,11 @@ describe('User visits mainpage', function() {
 		});
 
 		//TEST BIBTEX ?? ?? ? ??? ?? ?? ??
-		it('page contains bibtex generating button', function() {
+
+  });
+		describe('page contains bibtex generating button', function() {
 			browser.assert.attribute('button', 'Generate Bibtext');
 		});
-
-	});
 
   describe('updating works with correct values', function() {
   
@@ -196,6 +196,7 @@ describe('User visits mainpage', function() {
       browser.visit('/');
       console.log(browser.html());
       var list=browser.text('a');
+      console.log(list);
       var boolean=list.indexOf('Author: Sipulisalaatti, Title: Minsun viites, Type: book')>-1;
       expect(boolean).to.be(true);
     });
