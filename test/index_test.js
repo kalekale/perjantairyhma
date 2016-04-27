@@ -188,8 +188,16 @@ describe('User visits mainpage', function() {
         browser.assert.success();
         browser.assert.text('h1', '"Minsun viites", type:book')
         browser.fill('author', 'Sipulisalaatti')
+        browser.pressButton('Update')
         console.log(browser.html());
       });
+    });
+
+    it('updating changes data', function() {
+      browser.visit('/');
+      var list=browser.text('a');
+      var boolean=list.indexOf('Author: Sipulisalaatti, Title: Minsun viites, Type: book')>-1;
+      expect(boolean).to.be(true);
     });
     
   });
