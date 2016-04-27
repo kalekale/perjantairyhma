@@ -218,7 +218,7 @@ describe('User visits mainpage', function() {
         browser.assert.success();
         browser.assert.text('h1', '"My", type:book')
         browser.fill('author', '')
-        browser.assert.attribute('button', 'Update', 'disabled');
+        browser.assert.attribute('#updateReference', 'disabled', 'disabled');
         browser.visit('/', done);
       });
     });
