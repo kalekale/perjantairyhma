@@ -179,7 +179,7 @@ describe('User visits mainpage', function() {
         .fill('editorB', 'Ma')
         .fill('titleB', 'My')
         .fill('publisherB', 'Matti\'z publishser')
-        .fill('yearB', '3')"#/5721440f63dbd9280baf70e6"
+        .fill('yearB', '3')
         .pressButton('Add', done);
     });
 
