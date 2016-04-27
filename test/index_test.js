@@ -189,12 +189,9 @@ describe('User visits mainpage', function() {
         browser.assert.success();
         browser.assert.text('h1', '"Minsun viites", type:book')
         browser.fill('author', 'Sipulisalaatti')
-        browser.pressButton('Update', done)
+        browser.pressButton('Update')
+        browser.visit('/', done);
       });
-    });
-
-    before(function(done) {
-      browser.visit('/', done);
     });
 
     it('updating changes data', function() {
