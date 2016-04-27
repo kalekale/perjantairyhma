@@ -171,7 +171,12 @@ describe('User visits mainpage', function() {
 	});
 
   describe('updating works with correct values', function() {
-      browser.assert.link('Author: Mattis, Title: Minsun viites, Type: book');
+  
+    before(function(done) {
+      browser.visit('/', done);
+    });
+
+    browser.assert.link('Author: Mattis, Title: Minsun viites, Type: book');
   });
 
 });
