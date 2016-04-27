@@ -168,15 +168,24 @@ describe('User visits mainpage', function() {
 		it('page contains bibtex generating button', function() {
 			browser.assert.element('button', 'Generate Bibtext');
 		});
+
 	});
 
   describe('updating works with correct values', function() {
   
     before(function(done) {
-      browser.visit('/', done);
+      browser
+        .select('select', 'Book')
+        .fill('editorB', 'Ma')
+        .fill('titleB', 'My')
+        .fill('publisherB', 'Matti\'z publishser')
+        .fill('yearB', '3')
+        .pressButton('Add', done);
     });
 
-    browser.assert.link('Author: Mattis, Title: Minsun viites, Type: book');
+    it('lin exists', function() {
+      browser.assert.link('Author: Ma, Title: My, Type: book');
+    });
+    
   });
-
 });
