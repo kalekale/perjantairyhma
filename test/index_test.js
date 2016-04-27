@@ -213,12 +213,12 @@ describe('User visits mainpage', function() {
         .pressButton('Add', done);
     });
 
-    it('clicking link opens an entry', function(done) {
+    it('clicking link opens an entry, update button disabled with incorrect data', function(done) {
       browser.clickLink('Author: Ma, Title: My, Type: book', function() {
         browser.assert.success();
         browser.assert.text('h1', '"My", type:book')
         browser.fill('author', '')
-        browser.pressButton('Update')
+        browser.assert.attribute('button', 'Update', 'disabled');
         browser.visit('/', done);
       });
     });
