@@ -165,12 +165,13 @@ describe('User visits mainpage', function() {
 		});
 
 		//TEST BIBTEX ?? ?? ? ??? ?? ?? ??
-
-  });
 		describe('page contains bibtex generating button', function() {
-			browser.assert.attribute('button', 'Generate Bibtext');
+      browser.assert.attribute('button', 'Generate Bibtext');
 		});
 
+
+  });
+  
   describe('updating works with correct values', function() {
   
     before(function(done) {
