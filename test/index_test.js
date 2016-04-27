@@ -166,7 +166,7 @@ describe('User visits mainpage', function() {
 
 		//TEST BIBTEX ?? ?? ? ??? ?? ?? ??
 		it('page contains bibtex generating button', function() {
-			browser.assert.element('button', 'Generate Bibtext');
+			browser.assert.attribute('button', 'Generate Bibtext');
 		});
 
 	});
@@ -184,8 +184,7 @@ describe('User visits mainpage', function() {
     });
 
     it('link exists', function() {
-      browser.clickLink('Author: Mattis, Title: Minsun viites, Type: book');
-
+      browser.clickLink('Author: Mattis, Title: Minsun viites, Type: book', function());
     });
 
     it('clicking link opens page', function() {      
