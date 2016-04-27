@@ -180,11 +180,11 @@ describe('User visits mainpage', function() {
         .fill('titleB', 'My')
         .fill('publisherB', 'Matti\'z publishser')
         .fill('yearB', '3')
-        .pressButton('Add');
-        .clickLink('Author: Ma, Title: My, Type: book', done);
+        .pressButton('Add', done);
     });
 
     it('lin exists', function() {
+      browser.clickLink('Author: Ma, Title: My, Type: book');
       browser.assert.text('Author')
 
     });
