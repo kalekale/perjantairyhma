@@ -177,17 +177,17 @@ describe('User visits mainpage', function() {
     before(function(done) {
       browser
         .select('select', 'Book')
-        .fill('editorB', 'Ma')
+        .fill('authorB', 'Ma')
         .fill('titleB', 'My')
         .fill('publisherB', 'Matti\'z publishser')
         .fill('yearB', '3')
         .pressButton('Add', done);
     });
 
-    it('link exists', function(done) {
-      browser.clickLink('Author: Mattis, Title: Minsun viites, Type: book', function() {
+    it('clicking link opens the entry', function(done) {
+      browser.clickLink('Author: Ma, Title: My, Type: book', function() {
         browser.assert.success();
-        browser.assert.text('h1', '"Minsun viites", type:book')
+        browser.assert.text('h1', '"My", type:book')
         browser.fill('author', 'Sipulisalaatti')
         browser.pressButton('Update')
         browser.visit('/', done);
@@ -195,12 +195,40 @@ describe('User visits mainpage', function() {
     });
 
     it('updating changes data', function() {
+      var list=browser.text('a');
+      var boolean=list.indexOf('Author: Sipulisalaatti, Title: My, Type: book')>-1;
+      expect(boolean).to.be(true);
+    });
+  });
+
+  describe('updating does not work with incorrect values', function() {
+  
+    before(function(done) {
+      browser
+        .select('select', 'Book')
+        .fill('authorB', 'Ma')
+        .fill('titleB', 'My')
+        .fill('publisherB', 'Matti\'z publishser')
+        .fill('yearB', '3')
+        .pressButton('Add', done);
+    });
+
+    it('clicking link opens an entry', function(done) {
+      browser.clickLink('Author: Ma, Title: My, Type: book', function() {
+        browser.assert.success();
+        browser.assert.text('h1', '"My", type:book')
+        browser.fill('author', '')
+        browser.pressButton('Update')
+        browser.visit('/', done);
+      });
+    });
+
+    it('update does not change data', function() {
       console.log(browser.html());
       var list=browser.text('a');
       console.log(list);
-      var boolean=list.indexOf('Author: Sipulisalaatti, Title: Minsun viites, Type: book')>-1;
+      var boolean=list.indexOf('Author: Ma, Title: My, Type: book')>-1;
       expect(boolean).to.be(true);
     });
-    
   });
 });
