@@ -186,11 +186,10 @@ describe('User visits mainpage', function() {
 
     it('link exists', function(done) {
       browser.clickLink('Author: Mattis, Title: Minsun viites, Type: book', function() {
-        browser
-          .assert.success();
-          .assert.text('h1', '"Minsun viites", type:book')
-          .fill('author', 'Sipulisalaatti')
-          .pressButton('Update', done)
+        browser.assert.success();
+        browser.assert.text('h1', '"Minsun viites", type:book')
+        browser.fill('author', 'Sipulisalaatti')
+        browser.pressButton('Update', done)
       });
     });
 
