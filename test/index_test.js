@@ -185,7 +185,7 @@ describe('User visits mainpage', function() {
 
     it('lin exists', function() {
       browser.clickLink('Author: Mattis, Title: Minsun viites, Type: book');
-      browser.assert.text('Author')
+      browser.assert.text('h1', '"Minsun viites", type:book')
 
     });
     
