@@ -170,4 +170,8 @@ describe('User visits mainpage', function() {
 		});
 	});
 
+  describe('updating works with correct values', function() {
+      browser.assert.link('Author: Mattis, Title: Minsun viites, Type: book');
+  });
+
 });
