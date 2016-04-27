@@ -193,12 +193,13 @@ describe('User visits mainpage', function() {
     });
 
     it('updating changes data', function() {
-      browser.visit('/');
-      console.log(browser.html());
-      var list=browser.text('a');
-      console.log(list);
-      var boolean=list.indexOf('Author: Sipulisalaatti, Title: Minsun viites, Type: book')>-1;
-      expect(boolean).to.be(true);
+      browser.visit('/' function() {
+       console.log(browser.html());
+       var list=browser.text('a');
+       console.log(list);
+       var boolean=list.indexOf('Author: Sipulisalaatti, Title: Minsun viites, Type: book')>-1;
+       expect(boolean).to.be(true);
+    )};
     });
     
   });
