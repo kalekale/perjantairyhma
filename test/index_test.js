@@ -165,7 +165,7 @@ describe('User visits mainpage', function() {
 		});
 
 		//TEST BIBTEX ?? ?? ? ??? ?? ?? ??
-		describe('page contains bibtex generating button', function() {
+		it('page contains bibtex generating button', function() {
       browser.assert.attribute('button', 'Generate Bibtext');
 		});
 
