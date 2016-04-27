@@ -179,12 +179,16 @@ describe('User visits mainpage', function() {
         .fill('editorB', 'Ma')
         .fill('titleB', 'My')
         .fill('publisherB', 'Matti\'z publishser')
-        .fill('yearB', '3')
+        .fill('yearB', '3')"#/5721440f63dbd9280baf70e6"
         .pressButton('Add', done);
     });
 
     it('link exists', function() {
-      browser.clickLink('Author: Mattis, Title: Minsun viites, Type: book', function());
+      browser.clickLink('Author: Mattis, Title: Minsun viites, Type: book', function() {
+        browser.assert.success();
+        console.log(browser.html());
+        browser.assert.text('h1', '"Minsun viites", type:book')
+      });
     });
 
     it('clicking link opens page', function() {      
