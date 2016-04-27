@@ -183,8 +183,14 @@ describe('User visits mainpage', function() {
         .pressButton('Add', done);
     });
 
-    it('lin exists', function() {
+    it('link exists', function() {
       browser.clickLink('Author: Mattis, Title: Minsun viites, Type: book');
+
+    });
+
+    it('clicking link opens page', function() {      
+      browser.assert.success();
+      console.log(browser.html());
       browser.assert.text('h1', '"Minsun viites", type:book')
 
     });
