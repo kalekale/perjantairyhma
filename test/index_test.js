@@ -193,8 +193,11 @@ describe('User visits mainpage', function() {
       });
     });
 
+    before(function(done) {
+      browser.visit('/', done);
+    });
+
     it('updating changes data', function() {
-      browser.visit('/') 
       console.log(browser.html());
       var list=browser.text('a');
       console.log(list);
