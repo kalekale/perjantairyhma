@@ -3,14 +3,13 @@ MainApp.controller('ReferenceController', function($scope,$location, $routeParam
 	$scope.reference={};
     
     $http.get("/"+$routeParams.id).success(function(ref){
-        console.log("latasi elokuvan sivun");
         $scope.reference=ref;
     });
     
     $scope.updateReference=function(){
-        console.log("calling update reference in controller")
+        //console.log("calling update reference in controller")
         $http.put("/"+$routeParams.id, $scope.reference).success(function(){
-            console.log("update succsess in controller");
+            //console.log("update succsess in controller");
         });
     };
     
