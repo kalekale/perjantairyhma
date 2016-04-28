@@ -206,15 +206,15 @@ describe('User visits mainpage', function() {
     before(function(done) {
       browser
         .select('select', 'Book')
-        .fill('authorB', 'Ma')
-        .fill('titleB', 'My')
+        .fill('authorB', 'Maaa')
+        .fill('titleB', 'Myyy')
         .fill('publisherB', 'Matti\'z publishser')
         .fill('yearB', '3')
         .pressButton('Add', done);
     });
 
     it('clicking link opens an entry, update button disabled with incorrect data', function(done) {
-      browser.clickLink('Author: Ma, Title: My, Type: book', function() {
+      browser.clickLink('Author: Maaa, Title: Myyy, Type: book', function() {
         browser.assert.success();
         browser.assert.text('h1', '"My", type:book')
         browser.fill('author', '')
@@ -223,12 +223,42 @@ describe('User visits mainpage', function() {
       });
     });
 
-    it('update does not change data', function() {
+    it('data remains unchanged', function() {
       console.log(browser.html());
       var list=browser.text('a');
       console.log(list);
-      var boolean=list.indexOf('Author: Ma, Title: My, Type: book')>-1;
+      var boolean=list.indexOf('Author: Maaa, Title: Myyy, Type: book')>-1;
       expect(boolean).to.be(true);
+    });
+  });
+
+  describe('deleting an entry', function() {
+  
+    before(function(done) {
+      browser
+        .select('select', 'Book')
+        .fill('authorB', 'Mb')
+        .fill('titleB', 'Myb')
+        .fill('publisherB', 'Matti\'z publishser')
+        .fill('yearB', '3')
+        .pressButton('Add', done);
+    });
+
+    it('clicking link opens an entry, delete button has functionality', function(done) {
+      browser.clickLink('Author: Mb, Title: Myb, Type: book', function() {
+        browser.assert.success();
+        browser.assert.text('h1', '"My", type:book')
+        browser.pressButton('#deleteReference')
+        browser.visit('/', done);
+      });
+    });
+
+    it('deleted entry is gone', function() {
+      console.log(browser.html());
+      var list=browser.text('a');
+      console.log(list);
+      var boolean=list.indexOf('Author: Mb, Title: Myb, Type: book')>-1;
+      expect(boolean).to.be(false);
     });
   });
 });
