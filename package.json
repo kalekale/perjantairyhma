@@ -8,9 +8,17 @@
     "test": "./node_modules/mocha/bin/mocha",
     "start": "node server.js"
   },
+      "config": {
+      "blanket": {
+        "pattern": "",
+        "data-cover-never": [ "node_modules", "test" ]
+      }
+    },
+
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "blanket": "^1.1.9",
     "browserify": "^13.0.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
