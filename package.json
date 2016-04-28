@@ -10,7 +10,7 @@
   },
       "config": {
       "blanket": {
-        "pattern": ["server.js"],
+        "pattern": ["server.js", "generator.js"],
         "data-cover-never": [ "node_modules", "test" ]
       }
     },
