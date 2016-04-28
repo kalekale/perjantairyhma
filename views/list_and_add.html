@@ -1,143 +1,181 @@
 
 <div class="page-header" ng-controller="MainController">
   <h1 id="title">References</h1>
+        <p>
+        <button class="btn btn-success btn-xs" name="bibtexGenerator" ng-click="generateBibtex()">Generate Bibtex</button>
+      </p>
 
 
+    <!--Listing references-->
+    <div id="referencesContainer" class="col-md-8" style="offset-top:10px">
+    <ul>
+      <li ng-repeat="reference in references track by reference._id">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <a href="#/{{reference._id}}">
+            Author: {{reference.author}}, Title: {{reference.title}}, Type: {{reference.type}}</a>
+          </h3>
+        </div>
+        <div class="panel-body">
+
+          <!--Other info of the reference-->
+        </div>
+      </div>
+      </li>   
+    </ul>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <a href="#/{{reference._id}}">
+            Author: {{reference.author}}, Title: {{reference.title}}, Type: {{reference.type}}</a>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <!--Other info of the reference-->
+          <div ng-if="year">
+            {{reference.year}}
+          </div>
+        </div>
+      </div>
+    </div>
     
     
 
+    <div id="formContainer" class="col-md-4">
+      <!--Select reference type-->
+      <div class="col-md-12">
+          <p>
+          What type of reference do you want to add?:
+          </p>
+          <div class="col-md-6">
+          <select class="form-control" ng-model="newReference.type">
+              <option value="article">Article</option>
+              <option value="book">Book</option>
+              <option value="inproceeding">Inproceeding</option>
+         </select>
+         </div>
+       </div>
 
-    <!--Select reference type-->
-    <div class="col-md-2">
-        What type of reference do you want to add?:
-        <select class="form-control"  ng-model="newReference.type">
-            <option value="article">Article</option>
-            <option value="book">Book</option>
-            <option value="inproceeding">Inproceeding</option>
-       </select>
-     </div>
 
+      <!--Forms for different reference types-->
+      
 
-    <!--Forms for different reference types-->
-    
+      <div ng-if="newReference.type != null">
+        <h2 name="addType">Add new {{newReference.type}} reference:</h2>
+        <p>Fields marked with '*' are required!</p> 
+      </div>
 
-    <div ng-if="newReference.type != null">
-      <h2 name="addType">Add new {{newReference.type}} reference:</h2>
-      <p>Fields marked with '*' are required!</p> 
+      <div ng-if="newReference.type == 'article'">
+          <form name="articleForm" novalidate>
+            <div class="form-group">
+              <label>Author*</label>
+              <input type="text" class="form-control" name="authorA" ng-model="newReference.author" required>
+            </div>
+            <div class="form-group">
+              <label>Title*</label>
+              <input type="text" class="form-control" name="titleA" ng-model="newReference.title" required>
+            </div>
+            <div class="form-group">
+              <label>Journal*</label>
+              <input type="text" class="form-control" name="journalA" ng-model="newReference.journal" required>
+            </div>
+            <div class="form-group">
+              <label>Volume</label>
+              <input type="text" class="form-control" name="volumeA" ng-model="newReference.volume">
+            </div>
+            <div class="form-group">
+              <label>Number</label>
+              <input type="text" class="form-control" name="numberA" ng-model="newReference.number">
+            </div>
+            <div class="form-group">
+              <label>Year*</label>
+              <input type="text" class="form-control" name="yearA" ng-model="newReference.year" required>
+            </div>
+            <div class="form-group">
+              <label>Pages</label>
+              <input type="text" class="form-control" name="pagesA" ng-model="newReference.pages">
+            </div>
+            <div class="form-group">
+              <label>Publisher</label>
+              <input type="text" class="form-control" name="publisherA" ng-model="newReference.publisher">
+            </div>
+            <div class="form-group">
+              <label>Address</label>
+              <input type="text" class="form-control" name="addressA" ng-model="newReference.address">
+            </div>
+
+            <button id="addReference" class="btn btn-success" ng-disabled="articleForm.$invalid" ng-click="addReference()">Add</button>
+          </form>
+      </div>
+
+      <div ng-if="newReference.type == 'book'">
+          <form name="bookForm" novalidate>
+            <div class="form-group">
+              <label>Author*</label>
+              <input type="text" class="form-control" name="authorB" ng-model="newReference.author" ng-required="!newReference.editor">
+            </div>
+            <div class="form-group">
+              <label>Editor*</label>
+              <input type="text" class="form-control" name="editorB" ng-model="newReference.editor" ng-required="!newReference.author">
+            </div>
+            <div class="form-group">
+              <label>Title*</label>
+              <input type="text" class="form-control" name="titleB" ng-model="newReference.title" required>
+            </div>
+            <div class="form-group">
+              <label>Publisher*</label>
+              <input type="text" class="form-control" name="publisherB" ng-model="newReference.publisher" required>
+            </div>
+            <div class="form-group">
+              <label>Year*</label>
+              <input type="text" class="form-control" name="yearB" ng-model="newReference.year" required>
+            </div>
+            <div class="form-group">
+              <label>Address</label>
+              <input type="text" class="form-control" name="addressB" ng-model="newReference.address">
+            </div>
+
+            <button id="addBook" class="btn btn-success" ng-disabled="bookForm.$invalid" ng-click="addReference()">Add</button>
+          </form>
+      </div>
+
+      <div ng-if="newReference.type == 'inproceeding'">
+          <form name="inproceedingForm" novalidate>
+            <div class="form-group">
+              <label>Author*</label>
+              <input type="text" class="form-control" name="authorI" ng-model="newReference.author" required>
+            </div>
+            <div class="form-group">
+              <label>Title*</label>
+              <input type="text" class="form-control" name="titleI" ng-model="newReference.title" required>
+            </div>
+            <div class="form-group">
+              <label>Book title*</label>
+              <input type="text" class="form-control" name="bookTitleI" ng-model="newReference.booktitle" required>
+            </div>
+            <div class="form-group">
+              <label>Year*</label>
+              <input type="text" class="form-control" name="yearI" ng-model="newReference.year" required>
+            </div>
+            <div class="form-group">
+              <label>Pages</label>
+              <input type="text" class="form-control" name="pagesI" ng-model="newReference.pages">
+            </div>
+            <div class="form-group">
+              <label>Publisher</label>
+              <input type="text" class="form-control" name="publisherI" ng-model="newReference.publisher">
+            </div>
+            <div class="form-group">
+              <label>Address</label>
+              <input type="text" class="form-control" name="addressI" ng-model="newReference.address">
+            </div>
+
+            <button id="addInproceeding" class="btn btn-success" ng-disabled="inproceedingForm.$invalid" ng-click="addReference()">Add</button>
+          </form>
+      </div>
+
     </div>
-
-    <div ng-if="newReference.type == 'article'">
-        <form name="articleForm" novalidate>
-          <div class="form-group">
-            <label>Author*</label>
-            <input type="text" class="form-control" name="authorA" ng-model="newReference.author" required>
-          </div>
-          <div class="form-group">
-            <label>Title*</label>
-            <input type="text" class="form-control" name="titleA" ng-model="newReference.title" required>
-          </div>
-          <div class="form-group">
-            <label>Journal*</label>
-            <input type="text" class="form-control" name="journalA" ng-model="newReference.journal" required>
-          </div>
-          <div class="form-group">
-            <label>Volume</label>
-            <input type="text" class="form-control" name="volumeA" ng-model="newReference.volume">
-          </div>
-          <div class="form-group">
-            <label>Number</label>
-            <input type="text" class="form-control" name="numberA" ng-model="newReference.number">
-          </div>
-          <div class="form-group">
-            <label>Year*</label>
-            <input type="text" class="form-control" name="yearA" ng-model="newReference.year" required>
-          </div>
-          <div class="form-group">
-            <label>Pages</label>
-            <input type="text" class="form-control" name="pagesA" ng-model="newReference.pages">
-          </div>
-          <div class="form-group">
-            <label>Publisher</label>
-            <input type="text" class="form-control" name="publisherA" ng-model="newReference.publisher">
-          </div>
-          <div class="form-group">
-            <label>Address</label>
-            <input type="text" class="form-control" name="addressA" ng-model="newReference.address">
-          </div>
-
-          <button id="addReference" class="btn btn-success" ng-disabled="articleForm.$invalid" ng-click="addReference()">Add</button>
-        </form>
-    </div>
-
-    <div ng-if="newReference.type == 'book'">
-        <form name="bookForm" novalidate>
-          <div class="form-group">
-            <label>Author*</label>
-            <input type="text" class="form-control" name="authorB" ng-model="newReference.author" ng-required="!newReference.editor">
-          </div>
-          <div class="form-group">
-            <label>Editor*</label>
-            <input type="text" class="form-control" name="editorB" ng-model="newReference.editor" ng-required="!newReference.author">
-          </div>
-          <div class="form-group">
-            <label>Title*</label>
-            <input type="text" class="form-control" name="titleB" ng-model="newReference.title" required>
-          </div>
-          <div class="form-group">
-            <label>Publisher*</label>
-            <input type="text" class="form-control" name="publisherB" ng-model="newReference.publisher" required>
-          </div>
-          <div class="form-group">
-            <label>Year*</label>
-            <input type="text" class="form-control" name="yearB" ng-model="newReference.year" required>
-          </div>
-          <div class="form-group">
-            <label>Address</label>
-            <input type="text" class="form-control" name="addressB" ng-model="newReference.address">
-          </div>
-
-          <button id="addBook" class="btn btn-success" ng-disabled="bookForm.$invalid" ng-click="addReference()">Add</button>
-        </form>
-    </div>
-
-    <div ng-if="newReference.type == 'inproceeding'">
-        <form name="inproceedingForm" novalidate>
-          <div class="form-group">
-            <label>Author*</label>
-            <input type="text" class="form-control" name="authorI" ng-model="newReference.author" required>
-          </div>
-          <div class="form-group">
-            <label>Title*</label>
-            <input type="text" class="form-control" name="titleI" ng-model="newReference.title" required>
-          </div>
-          <div class="form-group">
-            <label>Book title*</label>
-            <input type="text" class="form-control" name="bookTitleI" ng-model="newReference.booktitle" required>
-          </div>
-          <div class="form-group">
-            <label>Year*</label>
-            <input type="text" class="form-control" name="yearI" ng-model="newReference.year" required>
-          </div>
-          <div class="form-group">
-            <label>Pages</label>
-            <input type="text" class="form-control" name="pagesI" ng-model="newReference.pages">
-          </div>
-          <div class="form-group">
-            <label>Publisher</label>
-            <input type="text" class="form-control" name="publisherI" ng-model="newReference.publisher">
-          </div>
-          <div class="form-group">
-            <label>Address</label>
-            <input type="text" class="form-control" name="addressI" ng-model="newReference.address">
-          </div>
-
-          <button id="addInproceeding" class="btn btn-success" ng-disabled="inproceedingForm.$invalid" ng-click="addReference()">Add</button>
-        </form>
-    </div>
-    <p>
-      <button class="btn btn-success" name="bibtexGenerator" ng-click="generateBibtex()">Generate Bibtex</button>
-    </p>
-
 
 
     <!--This container has filtering functionality-->
@@ -178,26 +216,5 @@
     </div>-->
     
     
-    <!--Listing references-->
-    <ul>
-      <li ng-repeat="reference in references track by reference._id">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            <a href="#/{{reference._id}}">
-            Author: {{reference.author}}, Title: {{reference.title}}, Type: {{reference.type}}</a>
-          </h3>
-        </div>
-        <div class="panel-body">
-          <!--Other info of the reference-->
-        </div>
-      </div>
-      </li>   
-    </ul>
-    
-    
-    
-    
-
 </div>
 
