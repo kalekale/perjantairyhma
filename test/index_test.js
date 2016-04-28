@@ -35,6 +35,25 @@ describe('User visits mainpage', function() {
 		});
   });
 
+  describe('loads bibtex', function() {
+
+    it('should download bibtex', function() {
+      browser.fetch('http://localhost:3000/bib')
+      .then(function(response) {
+      console.log('Status code:', response.status);
+      if (response.status === 200)
+        browser.assert.success();
+      })
+      .then(function(text) {
+        console.log('bibtex testattu');
+      })
+      .catch(function(error) {
+        browser.assert.failure();
+      });
+    });
+  });
+
+
   //TEST ARTICLE
   describe('adds valid Article', function() {
 
