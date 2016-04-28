@@ -216,7 +216,7 @@ describe('User visits mainpage', function() {
     it('clicking link opens an entry, update button disabled with incorrect data', function(done) {
       browser.clickLink('Author: Maaa, Title: Myyy, Type: book', function() {
         browser.assert.success();
-        browser.assert.text('h1', '"My", type:book')
+        browser.assert.text('h1', '"Myyy", type:book')
         browser.fill('author', '')
         browser.assert.attribute('#updateReference', 'disabled', 'disabled');
         browser.visit('/', done);
@@ -247,7 +247,7 @@ describe('User visits mainpage', function() {
     it('clicking link opens an entry, delete button has functionality', function(done) {
       browser.clickLink('Author: Mb, Title: Myb, Type: book', function() {
         browser.assert.success();
-        browser.assert.text('h1', '"My", type:book')
+        browser.assert.text('h1', '"Myb", type:book')
         browser.pressButton('#deleteReference')
         browser.visit('/', done);
       });
