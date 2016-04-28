@@ -6,7 +6,7 @@ function writeFile(cb) {
 
 	db.references.findAsync()
 	.then(function(allRefs) {
-		var stream = fs.createWriteStream("tmp/my_file.txt");
+		var stream = fs.createWriteStream("tmp/sources.bibtex");
 		stream.once('open', function(fd) {
   		_.map(allRefs, function(ref) {
   			stream.write('@' + ref.type + '{' + ref._id + ',');

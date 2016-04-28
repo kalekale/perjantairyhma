@@ -32,6 +32,13 @@ app.post('/new', function(req, res) {
   });
 });
 
+app.get('/bib', function(req, res) { 
+	generator.writeFile(function() {
+		var file = __dirname + '/tmp/sources.bibtex';
+  		res.download(file);
+	})
+})
+
 //ger ref by id
 app.get('/:id', function(req,res){
 	db.references.findOneAsync({_id: ObjectId(req.params.id)})
@@ -61,15 +68,6 @@ app.delete('/:id', function(req,res){
 		res.sendStatus(200);
 	});
 });
-
-
-app.get('/bib', function(req, res) { 
-	console.log('asd');
-	generator.writeFile(function() {
-		var file = __dirname + '/tmp/my_file.txt';
-  		res.download(file);
-	})
-})
 
 
 app.listen(process.env.PORT || 3000, function(){
