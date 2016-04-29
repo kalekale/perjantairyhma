@@ -1,13 +1,10 @@
-
-<div class="page-header" ng-controller="MainController">
-  <h1 id="title">References</h1>
-        <p>
-        <button class="btn btn-success btn-xs" name="bibtexGenerator" ng-click="generateBibtex()">Generate Bibtex</button>
-      </p>
-
-
+<div ng-controller="MainController">
+  <h1 id="title" class="page-header">References</h1>
+  <p class="col-md-12">
+    <button class="btn btn-success btn-xs" name="bibtexGenerator" ng-click="generateBibtex()">Generate Bibtex</button>
+  </p>
     <!--Listing references-->
-    <div id="referencesContainer" class="col-md-8" style="offset-top:10px">
+    <div id="referencesContainer" class="col-md-7">
     <ul>
       <li ng-repeat="reference in references track by reference._id">
       <div class="panel panel-default">
@@ -42,7 +39,7 @@
     
     
 
-    <div id="formContainer" class="col-md-4">
+    <div id="formContainer" class="col-md-5">
       <!--Select reference type-->
       <div class="col-md-12">
           <p>
