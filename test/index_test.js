@@ -249,9 +249,9 @@ describe('User visits mainpage', function() {
 
 	describe('deleting an entry', function() {
 	
-		before(function(done) {
+		before(function() {
 			browser
-        browser.assert.success(done);
+        browser.assert.success();
 		});
 
 		it('clicking link opens an entry, delete button has functionality', function(done) {
