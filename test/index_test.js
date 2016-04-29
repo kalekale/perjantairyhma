@@ -251,18 +251,13 @@ describe('User visits mainpage', function() {
 	
 		before(function(done) {
 			browser
-				.select('select', 'Book')
-				.fill('authorB', 'Mb')
-				.fill('titleB', 'Myb')
-				.fill('publisherB', 'Matti\'z publishser')
-				.fill('yearB', '3')
-				.pressButton('Add', done);
+        browser.assert.success(done);
 		});
 
 		it('clicking link opens an entry, delete button has functionality', function(done) {
-			browser.clickLink('Author: Mb, Title: Myb, Type: book', function() {
+			browser.clickLink('Author: Maaa, Title: Myyy, Type: book', function() {
 				browser.assert.success();
-				browser.assert.text('h1', '"Myb", type:book')
+				browser.assert.text('h1', '"Myyy", type:book')
 				browser.pressButton('#deleteReference')
 				browser.visit('/', done);
 			});
