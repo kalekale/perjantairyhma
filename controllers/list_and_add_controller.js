@@ -28,8 +28,7 @@ MainApp.controller('MainController', function($scope,$location, $http){
         }
         console.log('bib size: '+list.length);
         $http.post("/bib",list).success(function(){
-            $scope.newReference={};
-            $scope.getReferences();
+            $scope.init();
         });
 
 

@@ -41,6 +41,7 @@ app.get('/bib', function(req, res) {
 
 //ger ref by id
 app.get('/:id', function(req,res){
+	console.log("get id");
 	db.references.findOneAsync({_id: ObjectId(req.params.id)})
 	.then(function(ref){
 		res.json(ref);
