@@ -14,6 +14,7 @@ Browser.localhost('example.com', 3000);
 describe('User visits mainpage', function() {
 	//todo tyhjennä kaikki
 	browser = new Browser();
+	this.timeout(15000);
 
 	before(function(done) {
 		browser.visit('/', done);
