@@ -27,10 +27,20 @@ MainApp.controller('MainController', function($scope,$location, $http){
             }
         }
         console.log('bib size: '+list.length);
+
+        $http.post('/bib', list).
+          success(function(data, status, headers, config) {
+            window.open('/bib'); //does the download
+          }).
+          error(function(data, status, headers, config) {
+            console.log('ERROR: could not download file');
+          });
+          /*
         $http.post("/bib",list).success(function(){
             $scope.newReference={};
             $scope.getReferences();
         });
+        */
 
 
         //window.open('/bib');

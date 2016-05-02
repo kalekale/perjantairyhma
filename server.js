@@ -32,11 +32,16 @@ app.post('/new', function(req, res) {
   });
 });
 
-app.get('/bib', function(req, res) { 
-	generator.writeFile(function() {
+app.post('/bib', function(req, res) { 
+	console.log('käy tääl')
+	generator.writeFile(req.body, function(req) {
 		var file = __dirname + '/tmp/sources.bibtex';
-  		res.download(file);
+  		res.sendStatus(200);
 	})
+})
+
+app.get('/bib', function(req, res) {
+	res.download(__dirname + '/tmp/sources.bibtex');
 })
 
 //ger ref by id
