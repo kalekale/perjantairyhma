@@ -10,8 +10,8 @@ MainApp.controller('MainController', function($scope,$location, $http){
 
     $scope.addReference=(function(){
         $http.post("/new",$scope.newReference).success(function(){
-            $scope.newReference={};
-            $scope.getReferences();
+            $scope.init();
+            $scope.message="Adding was successful!"
         });
 
         
@@ -37,8 +37,7 @@ MainApp.controller('MainController', function($scope,$location, $http){
           });
           /*
         $http.post("/bib",list).success(function(){
-            $scope.newReference={};
-            $scope.getReferences();
+            $scope.init();
         });
         */
 
@@ -53,11 +52,16 @@ MainApp.controller('MainController', function($scope,$location, $http){
         });
     };
 
+    $scope.init=function(){
+        $scope.message="";
+        $scope.getReferences();
+        $scope.newReference={};    
+    }
+
 
     //always when coming to the page
-    $scope.getReferences();
-    $scope.newReference={};
-
+    
+    $scope.init();
 
         
         

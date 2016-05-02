@@ -1,45 +1,55 @@
-<div ng-controller="MainController">
-  <h1 id="title" class="page-header">References</h1>
-  <div class="row">
+<div style="padding-left: 75px; padding-right: 75px" ng-controller="MainController">
+  <h1 id="title">References</h1>
+  
+  <div>
     <button class="btn btn-success btn-xs" name="bibtexGenerator" ng-click="generateBibtex()">Generate Bibtex</button>
   </div>
-    <!--Listing references-->
-    <div id="referencesContainer">
-    <ul>
+
+  <div><p>Add reference <input type="checkbox" ng-model="checkedAdd" ng-init="checkedAdd=false"></p></div>
+
+  <!--Listing references-->
+  <div class="col-md-6" id="referencesContainer" >
+  <ul>
+    
+    <li ng-repeat="reference in references track by reference._id">
       
-      <li ng-repeat="reference in references track by reference._id">
-      <div class="row">
-        <div class="panel panel-default col-md-6">
+        <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">
-              <a href="#/{{reference._id}}">
-                Title: {{reference.title}}, Type: {{reference.type}}</a>
-            </h3>
+            <div class="panel-title row">
+            <input class="col-md-1" style="position:relative; right:50px" type="checkbox" ng-model="reference.checked">
+              <h3 class="panel-title" style="position:relative; right:30px">
+                <a href="#/{{reference._id}}">
+                  Title: {{reference.title}}, Type: {{reference.type}}</a>
+              </h3>
+              
+            </div>
           </div>
           <div class="panel-body">
             Author: {{reference.author}}
           </div>
         </div>
-        <div class="col-md-2">
-          <input type="checkbox" ng-model="reference.checked">
-        </div>
-      </div> 
-      </li>  
+        
+    
+
       
-    </ul>
-    </div>
     
-    
-    <div><p>Add reference <input type="checkbox" ng-model="checkedAdd" ng-init="checkedAdd=false"></p></div>
-    <div class="col-md-6" ng-if="checkedAdd" id="formContainer">
+
+    </li> 
+
+
+  </ul>
+  </div>
+
+
+  <div class="col-md-6" ng-if="checkedAdd" id="formContainer">
       <!--Select reference type-->
       <div>
           <p>
           What type of reference do you want to add?:
           </p>
           <div>
-          <select class="form-control" ng-model="newReference.type">
-              <option value="article">Article</option>
+          <select class="form-control" ng-model="newReference.type" ng-init="newReference.type = 'article'">
+              <option value="article" ng-selected="true">Article</option>
               <option value="book">Book</option>
               <option value="inproceeding">Inproceeding</option>
          </select>
@@ -48,8 +58,6 @@
 
 
       <!--Forms for different reference types-->
-      
-
       <div ng-if="newReference.type != null">
         <h2 name="addType">Add new {{newReference.type}} reference:</h2>
         <p>Fields marked with '*' are required!</p> 
@@ -165,6 +173,11 @@
       </div>
 
     </div>
+  
+  
+  
+    
+    
 
 
     <!--This container has filtering functionality-->
