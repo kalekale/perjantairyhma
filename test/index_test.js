@@ -228,7 +228,6 @@ describe('User visits mainpage', function() {
 	describe('updating does not work with incorrect values', function() {
 	
 		before(function(done) {
-			console.log(browser.html());
 			browser
 				.check('addReference')
 				.select('select', 'Book')

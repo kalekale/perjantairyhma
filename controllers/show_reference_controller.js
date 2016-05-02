@@ -9,7 +9,7 @@ MainApp.controller('ReferenceController', function($scope,$location, $routeParam
     $scope.updateReference=function(){
         //console.log("calling update reference in controller")
         $http.put("/"+$routeParams.id, $scope.reference).success(function(){
-            //console.log("update succsess in controller");
+            $scope.message="Update was succesful!";
         });
     };
     
@@ -22,13 +22,7 @@ MainApp.controller('ReferenceController', function($scope,$location, $routeParam
         
     };
 
-    $scope.showConfirmation=function(){
-        $scope.showConfirm=true;
-    }
-
-    $scope.hideConfirmation=function(){
-        $scope.showConfirm=false;
-    }
+     
     
     
 });

@@ -1,9 +1,11 @@
 <div style="padding-left: 75px; padding-right: 75px" class="page-header" ng-controller="ReferenceController">
-
+    
     <div class="page-header">
       <h1>"{{reference.title}}", type:{{reference.type}}</h1>
     </div>
     <div class="btn-toolbar"></div>
+
+    <h4 ng-if="message">"{{message}}"</h4>
         
     <!--Reference info. Only fields that belong to the type of the reference are shown (ng-if)-->
     <form name="referenceForm" novalidate>
