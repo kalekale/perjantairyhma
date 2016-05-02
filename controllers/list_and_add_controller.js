@@ -31,6 +31,7 @@ MainApp.controller('MainController', function($scope,$location, $http){
         $http.post('/bib', list).
           success(function(data, status, headers, config) {
             window.open('/bib'); //does the download
+            $scope.init();
           }).
           error(function(data, status, headers, config) {
             console.log('ERROR: could not download file');

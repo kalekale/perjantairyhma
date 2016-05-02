@@ -1,11 +1,12 @@
 <div style="padding-left: 75px; padding-right: 75px" ng-controller="MainController">
   <h1 id="title">References</h1>
-  
+  <h4 ng-if="message">"{{message}}"</h4>
   <div>
     <button class="btn btn-success btn-xs" name="bibtexGenerator" ng-click="generateBibtex()">Generate Bibtex</button>
   </div>
 
   <div><p>Add reference <input type="checkbox" ng-model="checkedAdd" ng-init="checkedAdd=false"></p></div>
+  
 
   <!--Listing references-->
   <div class="col-md-6" id="referencesContainer" >
@@ -16,25 +17,20 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <div class="panel-title row">
-            <input class="col-md-1" style="position:relative; right:50px" type="checkbox" ng-model="reference.checked">
+              <input class="col-md-1" style="position:relative; right:50px" type="checkbox" ng-model="reference.checked">
               <h3 class="panel-title" style="position:relative; right:30px">
                 <a href="#/{{reference._id}}">
-                  Title: {{reference.title}}, Type: {{reference.type}}</a>
+                  Author: {{reference.author}}, Title: {{reference.title}}, Type: {{reference.type}}</a>
               </h3>
               
             </div>
           </div>
-          <div class="panel-body">
-            Author: {{reference.author}}
+          <div class="panel-body" >
+            <div><p>Show <input type="checkbox" ng-model="show" ng-init="show=false"></p></div>
+            <p ng-if="show" ng-repeat="(key, value) in reference">{{key}}: {{value}}</p>
           </div>
         </div>
-        
-    
-
-      
-    
-
-    </li> 
+     </li> 
 
 
   </ul>
