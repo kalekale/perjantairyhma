@@ -228,6 +228,7 @@ describe('User visits mainpage', function() {
 	describe('updating does not work with incorrect values', function() {
 	
 		before(function(done) {
+			
 			browser
 				.check('addReference')
 				.select('select', 'Book')
@@ -238,24 +239,15 @@ describe('User visits mainpage', function() {
 				.pressButton('Add', done);
 		});
 
-		
-
 		it('clicking link opens an entry, update button disabled with incorrect data', function(done) {
 			browser.clickLink('Author: Maaa, Title: Myyy, Type: book', function() {
 				browser.assert.success();
 				browser.assert.text('h1', '"Myyy", type:book')
 				browser.fill('author', '')
 				browser.assert.attribute('#updateReference', 'disabled', 'disabled');
-				done();
+				browser.visit('/', done);
 			});
 		});
-
-		it('return button is visible', function(done){
-			browser.pressButton('#returnButton');
-			browser.assert.success();
-			browser.assert.text('h1', 'References');
-			browser.visit("/",done);
-		})
 
 		it('data remains unchanged', function() {
 			var list=browser.text('a');
@@ -286,9 +278,4 @@ describe('User visits mainpage', function() {
 			expect(boolean).to.be(false);
 		});
 	});
-
-	describe('return button tests', function() {
-		
-		
-	});	
 });
