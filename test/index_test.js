@@ -59,6 +59,7 @@ describe('User visits mainpage', function() {
 
 		before(function(done) {
 			browser
+			.check('addReference')
 			.select('select', 'Article')
 			.fill('authorA', 'Matti')
 			.fill('titleA', 'Minun viite')
@@ -68,6 +69,7 @@ describe('User visits mainpage', function() {
 		});
 
 		it('it is added to the listing', function() {
+			//console.log(browser.html());
 				var list=browser.text('a');
 				var boolean=list.indexOf('Author: Matti, Title: Minun viite, Type: article')>-1;
 				expect(boolean).to.be(true);
@@ -78,6 +80,7 @@ describe('User visits mainpage', function() {
 	
 	before(function(done) {
 			browser
+			.check('addReference')
 			.select('select', 'Article');
 				browser.fill('authorA', 'Matti');
 				done();
@@ -96,12 +99,13 @@ describe('User visits mainpage', function() {
 
 		before(function(done) {
 			browser
+			.check('addReference')
 			.select('select', 'Inproceeding')
-				.fill('authorI', 'Mattis')
-				.fill('titleI', 'Minusn viite')
-				.fill('bookTitleI', 'Minun Elämäni VII')
-				.fill('yearI', '9253')
-				.pressButton('Add', done);
+			.fill('authorI', 'Mattis')
+			.fill('titleI', 'Minusn viite')
+			.fill('bookTitleI', 'Minun Elämäni VII')
+			.fill('yearI', '9253')
+			.pressButton('Add', done);
 		});
 
 		it('should list new reference', function() {
@@ -115,11 +119,12 @@ describe('User visits mainpage', function() {
 	
 	before(function(done) {
 			browser
+			.check('addReference')
 			.select('select', 'Inproceeding');
-				browser.fill('pagesI', 'eeeee')
-				.fill('publisherI', 'ooooo')
-				.fill('addressI', 'ooooo');
-				done();
+			browser.fill('pagesI', 'eeeee')
+			.fill('publisherI', 'ooooo')
+			.fill('addressI', 'ooooo');
+			done();
 		});
 
 		it('the button should be disabled', function() {
@@ -136,12 +141,13 @@ describe('User visits mainpage', function() {
 
 		before(function(done) {
 			browser
-		.select('select', 'Book')
-				.fill('authorB', 'Mattis')
-				.fill('titleB', 'Minsun viites')
-				.fill('publisherB', 'Matti\'s publishser')
-				.fill('yearB', '2')
-				.pressButton('Add', done);
+			.check('addReference')
+			.select('select', 'Book')
+			.fill('authorB', 'Mattis')
+			.fill('titleB', 'Minsun viites')
+			.fill('publisherB', 'Matti\'s publishser')
+			.fill('yearB', '2')
+			.pressButton('Add', done);
 		});
 
 		it('should list new reference', function() {
@@ -155,12 +161,13 @@ describe('User visits mainpage', function() {
 
 		before(function(done) {
 			browser
-		.select('select', 'Book')
-				.fill('editorB', 'Mattiz')
-				.fill('titleB', 'Minzun viites')
-				.fill('publisherB', 'Matti\'z publishser')
-				.fill('yearB', '3')
-				.pressButton('Add', done);
+			.check('addReference')
+			.select('select', 'Book')
+			.fill('editorB', 'Mattiz')
+			.fill('titleB', 'Minzun viites')
+			.fill('publisherB', 'Matti\'z publishser')
+			.fill('yearB', '3')
+			.pressButton('Add', done);
 		});
 
 		it('should list new reference', function() {
@@ -174,7 +181,7 @@ describe('User visits mainpage', function() {
 	
 		before(function(done) {
 			browser
-			
+			.check('addReference')
 			.select('select', 'Book')
 			.fill('publisherB', 'Mattib')
 			.fill('yearB', 'Manun viiteb');
@@ -193,12 +200,12 @@ describe('User visits mainpage', function() {
 	
 		before(function(done) {
 			browser
-				.select('select', 'Book')
-				.fill('authorB', 'Ma')
-				.fill('titleB', 'My')
-				.fill('publisherB', 'Matti\'z publishser')
-				.fill('yearB', '3')
-				.pressButton('Add', done);
+			.select('select', 'Book')
+			.fill('authorB', 'Ma')
+			.fill('titleB', 'My')
+			.fill('publisherB', 'Matti\'z publishser')
+			.fill('yearB', '3')
+			.pressButton('Add', done);
 		});
 
 		it('clicking link opens the entry', function(done) {
