@@ -11,7 +11,7 @@ MainApp.controller('MainController', function($scope,$location, $http){
     $scope.addReference=(function(){
         $http.post("/new",$scope.newReference).success(function(){
             $scope.init();
-            alert("Adding was successful!");
+            $scope.message="Adding was succesful!";
         });
 
         
