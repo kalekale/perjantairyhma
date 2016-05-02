@@ -18,11 +18,26 @@ MainApp.controller('MainController', function($scope,$location, $http){
     });
 
     $scope.generateBibtex=(function(){
-        console.log('pressed')
-        window.open('/bib');
+        var list=[];
+        for(var key in $scope.references){
+            var obj=$scope.references[key];
+            if(obj.checked){
+                delete obj['checked'];
+                list.push(obj);
+            }
+        }
+        console.log('bib size: '+list.length);
+        $http.post("/bib",list).success(function(){
+            $scope.newReference={};
+            $scope.getReferences();
+        });
+
+
+        //window.open('/bib');
     })
 
     $scope.deleteReference=function(){
+
         $http.delete("/"+$routeParams.id).success(function(){
             $location.path("/");
         });

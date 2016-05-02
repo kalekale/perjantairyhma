@@ -14,10 +14,21 @@ MainApp.controller('ReferenceController', function($scope,$location, $routeParam
     };
     
     $scope.deleteReference=function(){
-        $http.delete("/"+$routeParams.id).success(function(){
-        	$location.path("/");
-    	});
+        if(confirm("Are you sure?")){
+            $http.delete("/"+$routeParams.id).success(function(){
+                $location.path("/");
+            });    
+        }
+        
     };
+
+    $scope.showConfirmation=function(){
+        $scope.showConfirm=true;
+    }
+
+    $scope.hideConfirmation=function(){
+        $scope.showConfirm=false;
+    }
     
     
 });

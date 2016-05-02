@@ -10,73 +10,75 @@
           <div class="form-group" >
             <div class="input-group">
               <div class="input-group-addon" style="min-width:125px">Author*</div>
-              <input type="text" class="form-control" name="author" placeholder="Author" ng-model="reference.author" placeholder="reference.author" ng-required="!reference.editor">
+              <input type="text" class="form-control" name="author" placeholder="Author" ng-model="reference.author" ng-required="!reference.editor">
             </div>
           </div>
           <div class="form-group" >
             <div class="input-group">
               <div class="input-group-addon" style="min-width:125px">Editor*</div>
-            <input type="text" class="form-control" name="editor" placeholder="Editor" ng-model="reference.editor" placeholder="reference.editor" ng-required="!reference.author">
+            <input type="text" class="form-control" name="editor" placeholder="Editor" ng-model="reference.editor" ng-required="!reference.author">
           </div>
           </div>
           <div class="form-group">
             <div class="input-group">
               <div class="input-group-addon" style="min-width:125px">Title*</div>
-            <input type="text" class="form-control" name="title" placeholder="Title" ng-model="reference.title" placeholder="reference.title" required>
+            <input type="text" class="form-control" name="title" placeholder="Title" ng-model="reference.title" required>
           </div>
           </div>
           <div class="form-group" ng-if="reference.type=='article'">
             <div class="input-group">
               <div class="input-group-addon" style="min-width:125px">Journal*</div>
-            <input type="text" class="form-control" name="journal" placeholder="Journal" ng-model="reference.journal" placeholder="reference.journal">
+            <input type="text" class="form-control" name="journal" placeholder="Journal" ng-model="reference.journal" >
           </div>
           </div>
           <div class="form-group" ng-if="reference.type=='inproceeding'">
             <div class="input-group">
               <div class="input-group-addon" style="min-width:125px">Book title</div>
-            <input type="text" class="form-control" name="bookTitle" placeholder="Book title" ng-model="reference.booktitle" placeholder="reference.booktitle">
+            <input type="text" class="form-control" name="bookTitle" placeholder="Book title" ng-model="reference.booktitle" >
           </div>
           </div>
           <div class="form-group" ng-if="reference.type=='inproceeding' || reference.type=='article' ">
             <div class="input-group">
               <div class="input-group-addon" style="min-width:125px">Pages</div>
-            <input type="text" class="form-control" name="pages" placeholder="Pages" ng-model="reference.pages" placeholder="reference.pages">
-          </div>
+              <input type="text" class="form-control" name="pages" placeholder="Pages" ng-model="reference.pages" >
+            </div>
           </div>
           <div class="form-group" ng-if="reference.type=='article' ">
             <div class="input-group">
               <div class="input-group-addon" style="min-width:125px">Volume</div>
-            <input type="text" class="form-control" name="volume"  placeholder="Volume" ng-model="reference.volume" placeholder="reference.volume">
+            <input type="text" class="form-control" name="volume"  placeholder="Volume" ng-model="reference.volume" >
           </div>
           </div>
           <div class="form-group" ng-if="reference.type=='article' ">
             <div class="input-group">
               <div class="input-group-addon" style="min-width:125px">Number</div>
-            <input type="text" class="form-control" name="number" placeholder="Number" ng-model="reference.number" placeholder="reference.number">
+            <input type="text" class="form-control" name="number" placeholder="Number" ng-model="reference.number" >
           </div>
           </div>
           <div class="form-group">
             <div class="input-group">
               <div class="input-group-addon" style="min-width:125px">Year</div>
-            <input type="text" class="form-control" name="year" placeholder="Year" ng-model="reference.year" placeholder="reference.year">
+            <input type="text" class="form-control" name="year" placeholder="Year" ng-model="reference.year" >
           </div>
           </div>
           <div class="form-group">
             <div class="input-group">
               <div class="input-group-addon" style="min-width:125px">Publisher</div>
-            <input type="text" class="form-control" name="publisher" placeholder="Publisher" ng-model="reference.publisher" placeholder="reference.publisher">
+            <input type="text" class="form-control" name="publisher" placeholder="Publisher" ng-model="reference.publisher" >
           </div>
           </div>
           <div class="form-group">
             <div class="input-group">
               <div class="input-group-addon" style="min-width:125px">Address</div>
-            <input type="text" class="form-control" name="address" placeholder="Address" ng-model="reference.address" placeholder="reference.address">
+            <input type="text" class="form-control" name="address" placeholder="Address" ng-model="reference.address" >
             </div>
           </div>
           <div class="btn-group" style="padding-left: 55px">
+          <a href="#/" id="returnButton" class="btn btn-primary">Return</a>
           <button id="updateReference" class="btn btn-success" ng-disabled="referenceForm.$invalid" ng-click="updateReference()">Update</button>
-          <a href="/" id="returnButton" class="btn btn-primary">Return</a>
           <button id="deleteReference" class="btn btn-danger" ng-click="deleteReference()">Delete</button>
           </div>
         </form>
+
+        
 </div>

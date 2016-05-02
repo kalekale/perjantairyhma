@@ -1,36 +1,43 @@
 <div ng-controller="MainController">
   <h1 id="title" class="page-header">References</h1>
-  <p class="col-md-12">
+  <div class="row">
     <button class="btn btn-success btn-xs" name="bibtexGenerator" ng-click="generateBibtex()">Generate Bibtex</button>
-  </p>
+  </div>
     <!--Listing references-->
-    <div id="referencesContainer" class="col-md-7">
+    <div id="referencesContainer">
     <ul>
+      
       <li ng-repeat="reference in references track by reference._id">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            <a href="#/{{reference._id}}">
-            Author: {{reference.author}}, Title: {{reference.title}}, Type: {{reference.type}}</a>
-          </h3>
+      <div class="row">
+        <div class="panel panel-default col-md-6">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <a href="#/{{reference._id}}">
+                Title: {{reference.title}}, Type: {{reference.type}}</a>
+            </h3>
+          </div>
+          <div class="panel-body">
+            Author: {{reference.author}}
+          </div>
         </div>
-        <div class="panel-body">
-          <!--Other info of the reference-->
+        <div class="col-md-2">
+          <input type="checkbox" ng-model="reference.checked">
         </div>
-      </div>
-      </li>   
+      </div> 
+      </li>  
+      
     </ul>
     </div>
     
     
-
-    <div id="formContainer" class="col-md-5">
+    <div><p>Add reference <input type="checkbox" ng-model="checkedAdd" ng-init="checkedAdd=false"></p></div>
+    <div class="col-md-6" ng-if="checkedAdd" id="formContainer">
       <!--Select reference type-->
-      <div class="col-md-12">
+      <div>
           <p>
           What type of reference do you want to add?:
           </p>
-          <div class="col-md-6">
+          <div>
           <select class="form-control" ng-model="newReference.type">
               <option value="article">Article</option>
               <option value="book">Book</option>
