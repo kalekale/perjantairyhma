@@ -10,8 +10,8 @@ MainApp.controller('MainController', function($scope,$location, $http){
 
     $scope.addReference=(function(){
         $http.post("/new",$scope.newReference).success(function(){
-            $scope.newReference={};
-            $scope.getReferences();
+            $scope.init();
+            $scope.message="Adding was successful!"
         });
 
         
@@ -27,10 +27,19 @@ MainApp.controller('MainController', function($scope,$location, $http){
             }
         }
         console.log('bib size: '+list.length);
+
+        $http.post('/bib', list).
+          success(function(data, status, headers, config) {
+            window.open('/bib'); //does the download
+          }).
+          error(function(data, status, headers, config) {
+            console.log('ERROR: could not download file');
+          });
+          /*
         $http.post("/bib",list).success(function(){
-            $scope.newReference={};
-            $scope.getReferences();
+            $scope.init();
         });
+        */
 
 
         //window.open('/bib');
@@ -43,11 +52,16 @@ MainApp.controller('MainController', function($scope,$location, $http){
         });
     };
 
+    $scope.init=function(){
+        $scope.message="";
+        $scope.getReferences();
+        $scope.newReference={};    
+    }
+
 
     //always when coming to the page
-    $scope.getReferences();
-    $scope.newReference={};
-
+    
+    $scope.init();
 
         
         
