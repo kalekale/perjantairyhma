@@ -7,3 +7,5 @@
 [Travis](https://travis-ci.org/kalekale/perjantairyhma)
 
 [Heroku](http://perjantairyhma.herokuapp.com/#/)
+
+[Raportti juttu](https://docs.google.com/document/d/1WxSaoLlQT4PliExilj--iPBI0SpLxkgdYKNhYF1aLuQ/edit?usp=sharing)
